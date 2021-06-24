@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       color: red;
+    }
+
+    .header {
+        color: red;
+    }
+</style>
+<body class="body">
+    <div class="main-wrapper">
+        <div class="header">
+            <h1 id="heading">Background Color <span id="hex-code"></span></h1>
+        </div>
+        <div class="button-wrapper">
+            <button id="button">Click Me</button>
+        </div>
+    </div>
+
+
+    <script>
+        const button = document.querySelector('#button');
+        var hexCode = document.querySelector('#hex-code')
+        var heading = document.querySelector('.header');
+        var newNumber = heading.style.color; 
+        console.log(newNumber);
+        hexCode.innerHTML = newNumber;
+
+
+        button.addEventListener('click', function() {
+            for (i = 0; i<1000; i++){
+              
+            }
+        })
+    </script>
+</body>
+</html>

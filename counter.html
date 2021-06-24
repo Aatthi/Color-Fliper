@@ -15,6 +15,7 @@
             align-items: center;
             text-align: center;
             height: 700px;
+        
         }
 
         button{
@@ -30,15 +31,23 @@
         #counter-number{
             font-size: 30px;
         }
+
+        .small {
+font-size: 20px;
+        }
+
+        .big{
+font-size: 30px;
+        }
     </style>
     <div class="counter-wrapper">
         <div class="number">
             <h1 id="counter-number">0</h1>
         </div>
         <div class="buttons">
-            <button id="decrease-button">Decrease</button>
-            <button id="reset-button">RESET</button>
-            <button id="increase-button">Increase</button>
+            <button id="decrease-button" onclick="transitionEffect()">Decrease</button>
+            <button id="reset-button" onclick="transitionEffect()">RESET</button>
+            <button id="increase-button" onclick="transitionEffect()">Increase</button>
         </div>
     </div>
     
@@ -49,7 +58,6 @@
         var increaseButton = document.querySelector('#increase-button');
         var counterNumber = document.querySelector('#counter-number');
 
-       
         var currentCounterValue = counterNumber.textContent;
         console.log(currentCounterValue);
 
@@ -58,7 +66,8 @@
             currentCounterValue--
             counterNumber.innerHTML = currentCounterValue 
             console.log(currentCounterValue);
-        
+
+            colourChange()
 
         })
 
@@ -66,15 +75,38 @@
             currentCounterValue++
             counterNumber.innerHTML = currentCounterValue 
             console.log(currentCounterValue);
+
+            colourChange()
+        
         })
 
         resetButton.addEventListener('click', function() {
             currentCounterValue = 0
             counterNumber.innerHTML = currentCounterValue 
             console.log(currentCounterValue);
+
+            colourChange()
+ 
         })
 
-        
+        function transitionEffect() {
+
+            counterNumber.style.transition = 'all 0.3s ease'
+            
+        }
+
+
+        function colourChange() {
+            if(currentCounterValue < 0){
+            counterNumber.style.color = 'red';
+            
+        } else if (currentCounterValue > 0) {
+            counterNumber.style.color = 'green';
+        } else {
+            counterNumber.style.color = 'black';
+        }
+        }
+
         
     </script>
 </body>

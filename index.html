@@ -39,16 +39,22 @@
         const button = document.querySelector('#button');
         var hexCode = document.querySelector('#hex-code')
         var heading = document.querySelector('.header');
-        var newNumber = heading.style.color; 
-        console.log(newNumber);
-        hexCode.innerHTML = newNumber;
+        var body = document.querySelector('.body');
+        
 
+        button.onClick = function() {
+         
+           
 
-        button.addEventListener('click', function() {
-            for (i = 0; i<1000; i++){
-              
+            var colors = ['purple', 'yellow', 'orange', 'brown', 'black'];
+        
+            for (var i = 0; i < colors.length; i ++){
+                body.style.backgroundColor = colors[i];
             }
-        })
+            
+        // 
+        }
+
     </script>
 </body>
 </html>

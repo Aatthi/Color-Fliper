@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 700px;
+        }
+
+        button{
+            padding: 10px 15px;
+            margin: 20px 15px;
+            font-size: 20px;
+        }
+
+        .counter-wrapper{
+            font-family: monospace;
+        }
+
+        #counter-number{
+            font-size: 30px;
+        }
+    </style>
+    <div class="counter-wrapper">
+        <div class="number">
+            <h1 id="counter-number">0</h1>
+        </div>
+        <div class="buttons">
+            <button id="decrease-button">Decrease</button>
+            <button id="reset-button">RESET</button>
+            <button id="increase-button">Increase</button>
+        </div>
+    </div>
+    
+
+    <script>
+        var decreaseButton = document.querySelector('#decrease-button');
+        var resetButton = document.querySelector('#reset-button');
+        var increaseButton = document.querySelector('#increase-button');
+        var counterNumber = document.querySelector('#counter-number');
+
+       
+        var currentCounterValue = counterNumber.textContent;
+        console.log(currentCounterValue);
+
+
+        decreaseButton.addEventListener('click', function() {
+            currentCounterValue--
+            counterNumber.innerHTML = currentCounterValue 
+            console.log(currentCounterValue);
+        
+
+        })
+
+        increaseButton.addEventListener('click', function() {
+            currentCounterValue++
+            counterNumber.innerHTML = currentCounterValue 
+            console.log(currentCounterValue);
+        })
+
+        resetButton.addEventListener('click', function() {
+            currentCounterValue = 0
+            counterNumber.innerHTML = currentCounterValue 
+            console.log(currentCounterValue);
+        })
+
+        
+        
+    </script>
+</body>
+</html>

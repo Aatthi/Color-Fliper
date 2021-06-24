@@ -17,7 +17,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-       color: red;
+        color: red;
+        text-align: center;
+ 
     }
 
     .header {
@@ -36,24 +38,25 @@
 
 
     <script>
-        const button = document.querySelector('#button');
+        const button = document.getElementById('button');
         var hexCode = document.querySelector('#hex-code')
-        var heading = document.querySelector('.header');
+        var heading = document.querySelector('#heading');
         var body = document.querySelector('.body');
-        
+        var colors = ['purple', 'yellow', 'orange', 'brown', 'black', 'blue', 'red', 'green', 'burlywood'];
 
-        button.onClick = function() {
-         
-           
 
-            var colors = ['purple', 'yellow', 'orange', 'brown', 'black'];
+        button.addEventListener('click', function() {
+            color = colors.shift();
+            colors.push(color);
         
-            for (var i = 0; i < colors.length; i ++){
-                body.style.backgroundColor = colors[i];
-            }
-            
-        // 
-        }
+            body.style.backgroundColor = colors[[Math.floor(Math.random() * colors.length)]];
+            var currentColor = getComputedStyle(body.style.backgroundColor);
+            console.log(currentColor);
+        });
+
+
+
+
 
     </script>
 </body>

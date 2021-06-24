@@ -11,25 +11,38 @@
         margin: 0;
         box-sizing: border-box;
         padding: 0;
+
     }
 
     body{
         display: flex;
         justify-content: center;
         align-items: center;
-        color: red;
         text-align: center;
+        height: 700px;
+        
  
     }
 
+    button{
+        padding: 10px;
+        font-family: monospace;
+        font-size: 30px;
+        background: rgb(233, 135, 135);
+        border: 1px solid gold;
+        color: rgb(250, 250, 250);
+    }
+
     .header {
-        color: red;
+        color: purple;
+        font-size: 30px;
+     
     }
 </style>
 <body class="body">
     <div class="main-wrapper">
         <div class="header">
-            <h1 id="heading">Background Color <span id="hex-code"></span></h1>
+            <h1 id="heading">Background Color: <span id="hex-code">rgb(250, 250, 250)</span></h1>
         </div>
         <div class="button-wrapper">
             <button id="button">Click Me</button>
@@ -50,8 +63,15 @@
             colors.push(color);
         
             body.style.backgroundColor = colors[[Math.floor(Math.random() * colors.length)]];
-            var currentColor = getComputedStyle(body.style.backgroundColor);
-            console.log(currentColor);
+            
+            const bodyColor = body.style.backgroundColor
+            var currentColor = getComputedStyle(body);
+            hexCode.innerHTML = currentColor.backgroundColor;
+
+            function rgbToHex(r, g, b) {
+                return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+            }
+            console.log(rgbToHex(currentColor.backgroundColor));
         });
 
 

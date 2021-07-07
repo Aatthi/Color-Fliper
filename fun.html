@@ -31,6 +31,8 @@
         var userName = document.querySelector('#userName');
         var passWord = document.querySelector('#passWord');
 
+        var array = [];
+
         button.addEventListener('click', function () {
             
             if (userName.value != 'Aatthi' || passWord.value != 'password') {
@@ -39,8 +41,21 @@
             alert('You entered Nothing');
         } else if (userName.value === null|| passWord.value === null) {
             alert('You entered Nothing');
-        } 
-        })
+        } else {
+            alert('Access Granted');
+        }
+
+     
+        var bot = userName.value
+        array.push(bot)
+        console.log(array);
+
+
+
+        });
+
+
+
 
 
 

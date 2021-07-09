@@ -8,51 +8,184 @@
 </head>
 <body>
     <style>
-        body {
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .addNewCotntact {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 700px;
+
+
+        }
+
+        h1{
+            font-family: 'Courier New', Courier, monospace;
         }
 
         input{
             margin: 10PX ;
+            padding: 10px 5px;
         }
+
+        button{
+            padding: 20px;
+            background: #5BC236;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 20px;
+        }
+
+       input::placeholder{
+        font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            font-size: 17px;
+       }
+
+       .contactDiv{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+         margin: 0 20px;
+         padding: 10px;
+         transition: all 0.2s;
+  
+       }
+
+       .contactDiv:hover{
+           background: rgb(255, 255, 255);
+           box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;       }
+
+       
+
+       h3{
+           margin: 0 5px;
+       }
+
+
+       .contactList {
+            height: 800px;
+            width: 500px;
+            overflow-x: hidden ;
+            overflow-y: auto;
+            background: white;
+       }
+
+       #showNumber{
+           display: none;
+           
+       }
+
     </style>
 
-    <input type="text" name="" id="userName" placeholder="Username">
-    <input type="text" name="" id="passWord"  placeholder="Password">
-    <button id="button">Login</button>
+    <div class="addNewCotntact">
+    <h1>Add New contact</h1>
+    <input type="text" name="" id="firstName" placeholder="First Name">
+    <input type="text" name="" id="lasttName"  placeholder="Last Name">
+    <input type="text" name="" id="number"  placeholder="Phone Number">
+    <button id="button">Add to contacts</button>
+    </div>
 
+    <div class="contactList">
+        
+    </div>
     <script>
 
-        var button = document.querySelector('#button');
-        var userName = document.querySelector('#userName');
-        var passWord = document.querySelector('#passWord');
+        const button = document.querySelector('#button');
+        var firstName = document.querySelector('#firstName');
+        var lasttName = document.querySelector('#lasttName');
+        var number = document.querySelector('#number');
 
-        var array = [];
 
-        button.addEventListener('click', function () {
+        var contactList = []
+        var initialColor = ['royalblue', 'slateblue', 'yellowgreen', 'orange', 'mediumturquoise', 'magenta', 'lightcoral']
+
+
+
+        
+
+//...
+            function addContact(firstNameValue, lastNameValue, numberValue) {
+4
+                var firstNameValue = firstName.value
+                var lastNameValue = lasttName.value
+                var numberValue = number.value
+
+                if (firstNameValue === '' || firstNameValue === null || lastNameValue === '' || lastNameValue === null || numberValue === '' || numberValue === null){
+                    alert('invalid input')
+                } else{
+                    contactList.push({firstName: firstNameValue, lastName: lastNameValue, number: numberValue});
+                    firstName.value = '';
+                    lasttName.value = '';
+                    number.value = '';
+                    console.log(contactList);
+
+                    localStorage.setItem("contactList", JSON.stringify(contactList));
+                    var storedContactList = JSON.parse(localStorage.getItem("contactList"));
+                    displayContactList();
+                }
+                
+            }
             
-            if (userName.value != 'Aatthi' || passWord.value != 'password') {
-            alert('Incorrect login credentials')
-        } else if (userName.value === ''|| passWord.value === '') {
-            alert('You entered Nothing');
-        } else if (userName.value === null|| passWord.value === null) {
-            alert('You entered Nothing');
-        } else {
-            alert('Access Granted');
+
+        
+        function displayContactList() {
+            var contactListDiv = document.querySelector('.contactList') 
+
+            for(i = 0; i < contactList.length; i++) {
+                var contactDiv = document.createElement('div')
+                contactDiv.setAttribute('class', 'contactDiv')
+
+
+                var initial = document.createElement('h3')
+                var firstNameDisplay = document.createElement('h3');    
+                var lastNameDisplay = document.createElement('h3');
+                var numberDisplay = document.createElement('h3');
+                numberDisplay.setAttribute('id', 'showNumber');
+
+                var randomInitialcolor = initialColor[Math.floor(Math.random()*initialColor.length)];
+
+                
+                initial.style.padding = '5px';
+                initial.style.borderRadius = '50%';
+                initial.style.background = randomInitialcolor;
+
+
+
+                initial.innerText = contactList[i].firstName[0] + contactList[i].lastName[0];
+                firstNameDisplay.innerText = contactList[i].firstName + '  '; 
+                lastNameDisplay.innerText = contactList[i].lastName; 
+                numberDisplay.innerText = '📞 ' + contactList[i].number; 
+
+            }
+                contactListDiv.appendChild(contactDiv);
+                contactDiv.appendChild(initial);
+                contactDiv.appendChild(firstNameDisplay);
+                contactDiv.appendChild(lastNameDisplay);
+                contactDiv.appendChild(numberDisplay);
+                
+
+                contactDiv.addEventListener('mouseenter', function() {
+                    numberDisplay.style.display = 'flex';
+                });
+
+                contactDiv.addEventListener('mouseleave', function() {
+                    numberDisplay.style.display = 'none';
+                })
+            
+
         }
+        
+        button.addEventListener('click', addContact);
 
-     
-        var bot = userName.value
-        array.push(bot)
-        console.log(array);
-
-
-
-        });
 
 
 

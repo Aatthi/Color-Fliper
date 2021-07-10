@@ -112,7 +112,8 @@
 
         
 
-//...
+        
+            
             function addContact(firstNameValue, lastNameValue, numberValue) {
 4
                 var firstNameValue = firstName.value
@@ -128,12 +129,34 @@
                     number.value = '';
                     console.log(contactList);
 
-                    localStorage.setItem("contactList", JSON.stringify(contactList));
-                    var storedContactList = JSON.parse(localStorage.getItem("contactList"));
+
                     displayContactList();
-                }
+                    
+                    
                 
+                }
+                saveToLocalStorage();
             }
+
+               function saveToLocalStorage() {
+
+                    window.localStorage.setItem("contact", JSON.stringify(contactList));
+                    JSON.parse(window.localStorage.getItem('contact'));
+                    // var storedContactList = JSON.parse(localStorage.getItem("contactList"));
+
+                    
+                    var Inidividualcontact = localStorage.getItem("contact");
+
+                    for(i = 0; i < Inidividualcontact.length; i++){
+                        console.log(Inidividualcontact)
+
+
+                    }
+                }
+             
+
+        
+     
             
 
         
@@ -183,8 +206,7 @@
             
 
         }
-        
-        button.addEventListener('click', addContact);
+                button.addEventListener('click', addContact);
 
 
 

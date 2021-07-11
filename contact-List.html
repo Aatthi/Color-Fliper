@@ -11,7 +11,7 @@
 
         body{
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
         }
         .addNewCotntact {
@@ -56,13 +56,13 @@
         align-items: center;
          margin: 0 20px;
          padding: 10px;
-         transition: all 0.2s;
-  
+         transition: all 0.2s;  
        }
 
        .contactDiv:hover{
            background: rgb(255, 255, 255);
-           box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;       }
+           box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;       
+        }
 
        
 
@@ -73,15 +73,22 @@
 
        .contactList {
             height: 800px;
-            width: 500px;
+            width: 600px;
             overflow-x: hidden ;
             overflow-y: auto;
             background: white;
        }
 
+      
+    
+
        #showNumber{
            display: none;
            
+       }
+
+       .contactDiv:hover #showNumber{
+        display: flex;
        }
 
     </style>
@@ -95,6 +102,7 @@
     </div>
 
     <div class="contactList">
+  
         
     </div>
     <script>
@@ -105,15 +113,13 @@
         var number = document.querySelector('#number');
 
 
-        var contactList = []
+        var contactList = JSON.parse(localStorage.getItem('contact')) || [];
         var initialColor = ['royalblue', 'slateblue', 'yellowgreen', 'orange', 'mediumturquoise', 'magenta', 'lightcoral']
 
 
 
-        
+        displayContactListAtTheStart();
 
-        
-            
             function addContact(firstNameValue, lastNameValue, numberValue) {
 4
                 var firstNameValue = firstName.value
@@ -127,41 +133,90 @@
                     firstName.value = '';
                     lasttName.value = '';
                     number.value = '';
-                    console.log(contactList);
 
 
                     displayContactList();
                     
+
                     
+
                 
                 }
-                saveToLocalStorage();
+                
             }
 
-               function saveToLocalStorage() {
+            function saveToLocalStorage() {
+            
 
-                    window.localStorage.setItem("contact", JSON.stringify(contactList));
-                    JSON.parse(window.localStorage.getItem('contact'));
-                    // var storedContactList = JSON.parse(localStorage.getItem("contactList"));
+                        window.localStorage.setItem("contact", JSON.stringify(contactList));
 
-                    
-                    var Inidividualcontact = localStorage.getItem("contact");
+                        // var storedContactList = JSON.parse(localStorage.getItem("contactList"));
 
-                    for(i = 0; i < Inidividualcontact.length; i++){
-                        console.log(Inidividualcontact)
 
+                        const Inidividualcontact = JSON.parse(localStorage.getItem('contact'));
+                       
 
                     }
-                }
-             
-
-        
-     
             
+
+            function displayContactListAtTheStart() {
+                var contactListDiv = document.querySelector('.contactList')
+
+                for(i = 0; i < contactList.length; i++) {
+                var contactDiv = document.createElement('div')
+                contactDiv.setAttribute('class', 'contactDiv')
+
+
+                var initial = document.createElement('h3')
+                var firstNameDisplay = document.createElement('h3');    
+                var lastNameDisplay = document.createElement('h3');
+                var numberDisplay = document.createElement('h3');
+                numberDisplay.setAttribute('id', 'showNumber');
+                initial.setAttribute('id', 'initials');
+                firstNameDisplay.setAttribute('id', 'firstNameDisplay');
+                lastNameDisplay.setAttribute('id', 'lastNameDisplay');
+
+                var randomInitialcolor = initialColor[Math.floor(Math.random()*initialColor.length)];
+
+                
+                initial.style.padding = '5px';
+                initial.style.borderRadius = '50%';
+                initial.style.background = randomInitialcolor;
+
+
+                const Inidividualcontact = JSON.parse(localStorage.getItem('contact'));
+                
+
+                initial.innerText = Inidividualcontact[i].firstName[0] + Inidividualcontact[i].lastName[0];
+                firstNameDisplay.innerText = Inidividualcontact[i].firstName + '  '; 
+                lastNameDisplay.innerText = Inidividualcontact[i].lastName; 
+                numberDisplay.innerText = '📞 ' + Inidividualcontact[i].number; 
+
+           
+                contactListDiv.appendChild(contactDiv);
+                contactDiv.appendChild(initial);
+                contactDiv.appendChild(firstNameDisplay);
+                contactDiv.appendChild(lastNameDisplay);
+                contactDiv.appendChild(numberDisplay);
+               
+
+                // contactDiv.addEventListener('mouseenter', function() {
+                //     numberDisplay.style.display = 'flex';
+                // });
+
+                // contactDiv.addEventListener('mouseleave', function() {
+                //     numberDisplay.style.display = 'none';
+                // })
+            }
+       
+        }
+        
+
 
         
         function displayContactList() {
-            var contactListDiv = document.querySelector('.contactList') 
+            var contactListDiv = document.querySelector('.contactList')
+ 
 
             for(i = 0; i < contactList.length; i++) {
                 var contactDiv = document.createElement('div')
@@ -188,6 +243,7 @@
                 lastNameDisplay.innerText = contactList[i].lastName; 
                 numberDisplay.innerText = '📞 ' + contactList[i].number; 
 
+
             }
                 contactListDiv.appendChild(contactDiv);
                 contactDiv.appendChild(initial);
@@ -195,7 +251,9 @@
                 contactDiv.appendChild(lastNameDisplay);
                 contactDiv.appendChild(numberDisplay);
                 
+                saveToLocalStorage();
 
+                
                 contactDiv.addEventListener('mouseenter', function() {
                     numberDisplay.style.display = 'flex';
                 });
@@ -203,12 +261,14 @@
                 contactDiv.addEventListener('mouseleave', function() {
                     numberDisplay.style.display = 'none';
                 })
-            
+                
 
         }
+
                 button.addEventListener('click', addContact);
 
 
+                
 
 
 

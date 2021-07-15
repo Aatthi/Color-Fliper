@@ -13,7 +13,7 @@
             justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
-            height: 800px;
+            height: 500px;
         }
         p{
             border: 1px solid black;
@@ -53,7 +53,9 @@
     </style>
 
     <div class="input-Text">
-        <p></p>
+        <div class="textDivContainer">
+            <p></p>
+        </div>
         <textarea type="text" name="" id="main-text"></textarea>
         <div class="buttonDiv"> 
             <button id="submit">Submit</button>
@@ -62,30 +64,42 @@
     </div>
 
     <script>
-        var publishedText = document.querySelector('p')
-        var inputText= document.querySelector('#main-text')
-        var submitButton = document.querySelector('#submit')
-        var edit = document.querySelector('#edit')
+        var publishedText = document.querySelector('p');
+        var inputText= document.querySelector('#main-text');
+        var submitButton = document.querySelector('#submit');
+        var edit = document.querySelector('#edit');
 
-
-        submitButton.addEventListener('click', submit) 
-        
         function submit() {
             publishedText.innerText =  inputText.value 
             inputText.value  = '';
         }
 
-        edit.addEventListener('click', function(newToDoText) {
-            publishedText.style.color = 'grey' 
+        function editFunction(newToDoText){
+            publishedText.style.color = 'red' 
             var newToDoText = window.prompt('what would you like to change it to');
       
                 if (newToDoText != '' && newToDoText != null){
                 
                     publishedText.innerText = newToDoText;
-                          
+                    publishedText.style.color = 'black'    
                 }
 
+        }
+
+        function displayText() {
+            var container = document.querySelector('.textDivContainer')
+            for(i=0; i<publishedText.length; i++){
+                var newEntry = document.createElement('p')
+                container.appendChild(newEntry);
+                
             }
+        }
+
+        submitButton.addEventListener('click', submit);
+        edit.addEventListener('click', editFunction);
+        
+
+        
     </script>
 </body>
 </html>

@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="body">
+
+  <div id="date-time">
+
+    <div class="date">
+      <h1 id="date"></h1>
+    </div>  
+
+    <div class="time">
+      <h1 id="time"></h1>
+    </div>
+
+  </div>
+
+  <div class="textDiv-wrapper">
+
+    <div class="text">
+
+        <div class="input-second-wrapper">
+
+          <div class="AddItemWrapper">
+            <h1>ToDo List</h1>
+
+              <div class="addDiv">
+                <button id="toggle-all-todos-button"><span>&#9745;</span> </button>
+                <input type="text" name="" id="add-input" placeholder="Add Item">
+                <button id="add-item">Add Item</button>
+                <button id="clear-button">Clear All</button>
+              </div>
+
+              <div class="ul-div">
+                <ul id='UL'></ul>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+<!-- 
+  <div class="foot">
+    <h1>Impact Web Designs <span>&#169;</span> </h1>
+  </div> -->
+
+
+  
+
+  <script>
+    
+      
+    var dt = new Date();
+    var DD = ("0" + dt.getDate()).slice(-2);
+    var MM = ("0" + (dt.getMonth() + 1)).slice(-2);
+    var YYYY = dt.getFullYear();
+    var date_string = DD + " / " + MM + " / " + YYYY;
+    document.getElementById('date').innerHTML = date_string;
+      
+
+
+
+    var todos = JSON.parse(localStorage.getItem("ToDoList")) || [];
+
+    displayToDosAtStart();
+
+
+    function addItem(itemToAdd){
+      var itemToAdd = addInputButton.value;
+      
+      if (itemToAdd === '' || itemToAdd === null){
+        alert('invalid input')
+      } else {
+        todos.push({toDoText: itemToAdd, completed:false});
+        addInputButton.value = '';
+        displayToDos();
+      }
+
+    }
+
+
+
+    function edit(newToDoText) {
+      
+      var newToDoText = window.prompt('what would you like to change it to');
+      
+      if (newToDoText != '' && newToDoText != null){
+        var position = event.currentTarget.id.split('-')[1];
+        todos[position].toDoText = newToDoText + " ";
+        displayToDos();                     
+      }
+     
+    }
+
+    function deleteAll(){
+      todos.splice(0, todos.length)
+      JSON.parse(localStorage.removeItem("ToDoList"));
+
+      if (todos.length < 1 || individualToDoItem.length < 1) {
+         
+        alert('all To do List cleared')
+      } 
+      displayToDos();
+    }      
+
+
+   
+
+    function remove(event) {
+      var position = event.currentTarget.id.split('-')[1];
+      // var position = event.currentTarget.id;
+      todos.splice(position, 1);
+      displayToDos();
+
+    }
+
+    function toggle(event){
+
+      var position = event.currentTarget.id.split('-')[1];
+      const individualToDoItem = JSON.parse(localStorage.getItem("ToDoList"));
+      // var position = event.currentTarget.id;
+      if (todos[position].completed === false){
+        todos[position].completed = true;
+
+      } else {
+        todos[position].completed = false;
+      }
+
+     
+    }
+
+
+    function saveToLocalStorage() {
+      window.localStorage.setItem("ToDoList", JSON.stringify(todos))
+      const individualToDoItem = JSON.parse(localStorage.getItem("ToDoList"));
+
+    }
+
+
+   
+      function toggleAll() {
+        var completedToDos = 0;
+      
+        for (i = 0; i < todos.length; i++){          
+           if (todos[i].completed === true) {
+            completedToDos++;
+           }
+        }
+
+        if (completedToDos === todos.length) {
+          for (var i = 0; i < todos.length; i++){            
+            todos[i].completed = false;          
+          } 
+        } else {         
+          for (var i = 0; i < todos.length; i++){            
+            todos[i].completed = true;   
+          }
+        }
+        displayToDos();
+      }
+
+      function displayToDos() {
+        var UL = document.getElementById('UL')
+        UL.innerHTML = '';
+
+        const input = document.getElementById('add-input')
+              var text = document.getElementsByTagName('p')
+              const button = document.getElementById('add-item')
+
+
+        for (i = 0; i < todos.length; i++) {
+            var newLi = document.createElement('li');
+            var newLabel = document.createElement('p');
+            newLi.setAttribute('id', 'newLi')
+            newLabel.setAttribute('class', 'label')
+            
+            newLabel.innerText = todos[i].toDoText;
+            // newLi.innerText = todos[i].toDoText;
+            newLi.style.fontWeight = '600'
+
+
+            var newButton = document.createElement('button')
+            newButton.innerText = 'X';
+            newButton.setAttribute("class", "remove")
+            newButton.addEventListener('click', remove);
+            newButton.id = 'remove-' + i;
+
+            var toggleButton = document.createElement('input');
+            toggleButton.setAttribute('type', 'checkbox');
+            toggleButton.setAttribute('class', 'toggle')
+            toggleButton.addEventListener('click', toggle);
+            toggleButton.style.cursor = 'pointer'
+            toggleButton.id = 'toggle-' + i;
+
+            // var editButton = document.createElement('button');
+            // editButton.setAttribute('class', 'editButton')
+            // editButton.innerText = 'Edit';
+            newLabel.addEventListener('click', edit);
+            newLabel.id = 'edit-' + i; 
+          
+            if (todos[i].completed === true) { 
+              newLabel.innerText =  todos[i].toDoText;
+              newLabel.style.textDecoration = 'line-through';
+              newLi.style.color = 'black';
+              newLi.style.fontWeight = '300'
+              
+              toggleButton.style.backgroundColor = '#6d34c2';
+              toggleButton.style.opacity = '0.7';
+              toggleButton.style.display= 'inline';
+              
+              toggleButton
+              toggleButton.setAttribute('checked', 'checked');
+
+            } else if(todos[i].completed === false) {
+              newLi.style.textDecoration = 'none';
+              newLabel.innerText =  todos[i].toDoText;       
+            }
+
+            UL.appendChild(newLi);
+            newLi.appendChild(toggleButton); 
+            newLi.appendChild(newLabel);
+            newLi.appendChild(newButton);  
+            saveToLocalStorage();
+
+       } 
+
+              
+        if(todos.length === 0) {
+              UL.style.display = 'none';
+            } else {
+              UL.style.display = 'flex';
+            }
+
+
+
+      }
+
+
+
+      function displayToDosAtStart() {
+        var UL = document.getElementById('UL')
+        UL.innerHTML = '';
+
+        const input = document.getElementById('add-input')
+              var text = document.getElementsByTagName('p')
+              const button = document.getElementById('add-item')
+
+
+        for (i = 0; i < todos.length; i++) {
+            var newLi = document.createElement('li');
+            var newLabel = document.createElement('p');
+            newLi.setAttribute('id', 'newLi')
+            newLabel.setAttribute('class', 'label')
+
+            const individualToDoItem = JSON.parse(localStorage.getItem("ToDoList"));
+
+            
+            newLabel.innerText = individualToDoItem[i].toDoText;
+            // newLi.innerText = todos[i].toDoText;
+            newLi.style.fontWeight = '600'
+
+
+            
+            var newButton = document.createElement('button')
+            newButton.innerText = 'X';
+            newButton.setAttribute("class", "remove")
+            newButton.addEventListener('click', remove);
+            newButton.id = 'remove-' + i;
+
+            var toggleButton = document.createElement('input');
+            toggleButton.setAttribute('type', 'checkbox');
+            toggleButton.setAttribute('class', 'toggle')
+            toggleButton.addEventListener('click', toggle);
+            toggleButton.style.cursor = 'pointer'
+            toggleButton.id = 'toggle-' + i;
+
+            // var editButton = document.createElement('button');
+            // editButton.setAttribute('class', 'editButton')
+            // editButton.innerText = 'Edit';
+            newLabel.addEventListener('click', edit);
+            newLabel.id = 'edit-' + i; 
+          
+            if (todos[i].completed === true) { 
+              newLabel.innerText =  todos[i].toDoText;
+              newLabel.style.textDecoration = 'line-through';
+              newLi.style.color = 'black';
+              newLi.style.fontWeight = '300'
+              
+              toggleButton.style.backgroundColor = '#6d34c2';
+              toggleButton.style.opacity = '0.7';
+              toggleButton.style.display= 'inline';
+              
+              toggleButton
+              toggleButton.setAttribute('checked', 'checked');
+
+            } else if(todos[i].completed === false) {
+              newLi.style.textDecoration = 'none';
+              newLabel.innerText =  todos[i].toDoText;       
+            }
+
+            UL.appendChild(newLi);
+            newLi.appendChild(toggleButton); 
+            newLi.appendChild(newLabel);
+            newLi.appendChild(newButton);  
+
+       } 
+
+        if(todos.length === 0) {
+              UL.style.display = 'none';
+            } else {
+              UL.style.display = 'flex';
+            }
+
+      }
+
+    
+
+
+    var toggleAllButton = document.getElementById('toggle-all-todos-button');
+
+    var addItemButton = document.getElementById('add-item');
+
+    var addInputButton = document.getElementById('add-input');
+
+    var editTextInput = document.getElementById('edit-text-input');
+
+    var editPositionInput = document.getElementById('edit-position-input');
+
+    var editButton = document.getElementById('edit-button')
+
+    var clearButton = document.getElementById('clear-button');
+
+
+
+    // var toggleButton = document.getElementById('toggle-button');
+
+    clearButton.addEventListener('click', deleteAll);
+
+    toggleAllButton.addEventListener('click', toggleAll)
+
+    // toggleButton.addEventListener('click', remove);
+
+    addInputButton.addEventListener('keypress', function(e){
+      if(e.key === 'Enter'){
+        addItem();
+        
+      }
+    })
+    addItemButton.addEventListener('click', addItem);
+
+    addItemButton.addEventListener('click', addItem);
+
+    // editButton.addEventListener('click', editItem);
+
+ 
+   
+
+    
+  </script>
+</body>
+</html>

@@ -36,18 +36,18 @@
             <h3 class="displayDiv"></h3>
         </div>
         <div class="buttonDiv">
-            <button id="button01" value="1" onclick="display()">2</button>
-            <button id="button02" value="2" onclick="display()">1</button>
+            <button id="button01" value="1" onclick="display(2)">2</button>
+            <button id="button02" value="2" onclick="display(1)">1</button>
             
-            <button class="button" value="3">3</button>
-            <button class="button">4</button>
-            <button class="button">5</button>
-            <button class="button">6</button>
-            <button class="button">7</button>
-            <button class="button">8</button>
-            <button class="button">9</button>
-            <button class="button" id="button0">0</button>
-            <button class="button">CE</button>
+            <button class="button" value="3" onclick="display(3)">3</button>
+            <button class="button" onclick="display(4)">4</button>
+            <button class="button" onclick="display(5)">5</button>
+            <button class="button" onclick="display(6)">6</button>
+            <button class="button" onclick="display(7)">7</button>
+            <button class="button" onclick="display(8)">8</button>
+            <button class="button" onclick="display(9)">9</button>
+            <button class="button" id="button0" onclick="display(0)">0</button>
+            <button class="button" onclick="display( )">CE</button>
             <button class="button">.</button>
             <button class="button">/</button>
             <button class="button">+</button>
@@ -58,9 +58,9 @@
           
 
           
-        function display() {
-            var buttons = document.querySelector(".button").value;
-            document.querySelector(".displayDiv").innerHTML = buttons;
+        function display(val) {
+           var update = document.querySelector(".button").value = val;
+            document.querySelector(".displayDiv").innerHTML = update;
         }
         
     

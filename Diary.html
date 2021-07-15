@@ -13,9 +13,9 @@
             justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
-            height: 500px;
+            height: 900px;
         }
-        p{
+        .textDivContainer{
             border: 1px solid black;
             height: 500px;
             width: 800px;
@@ -64,14 +64,25 @@
     </div>
 
     <script>
+        
         var publishedText = document.querySelector('p');
         var inputText= document.querySelector('#main-text');
         var submitButton = document.querySelector('#submit');
         var edit = document.querySelector('#edit');
 
-        function submit() {
-            publishedText.innerText =  inputText.value 
-            inputText.value  = '';
+        var entryArray = []
+
+        function submit(entryToAdd) {
+            var entryToAdd = inputText.value 
+
+            if (entryToAdd === '' || entryToAdd === null) {
+                alert('you entered nothing')
+            } else {
+                entryArray.push({newEntry: entryToAdd});
+                inputText.value  = '';
+            }
+            console.log(entryArray)
+            
         }
 
         function editFunction(newToDoText){
@@ -88,9 +99,12 @@
 
         function displayText() {
             var container = document.querySelector('.textDivContainer')
-            for(i=0; i<publishedText.length; i++){
-                var newEntry = document.createElement('p')
-                container.appendChild(newEntry);
+            for(i = 0; i < entryArray.length; i++){
+                var newText = document.createElement('p')
+
+                newText.innerText = entryArray[i].newEntry;
+
+                container.appendChild(newText);
                 
             }
         }

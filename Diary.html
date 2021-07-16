@@ -14,6 +14,7 @@
             align-items: center;
             flex-direction: column;
             height: 900px;
+            outline: none;
         }
         .textDivContainer{
             border: 1px solid black;
@@ -23,6 +24,7 @@
             padding: 17px;
             font-family: monospace;
             font-size: 20px;
+            overflow: scroll;
         }
 
         #main-text{
@@ -35,6 +37,7 @@
             padding: 20px;
             font-family: monospace;
             font-size: 20px;
+            outline: none;
         }    
 
         #buttonDiv{
@@ -49,6 +52,7 @@
             font-size: 30px;
             font-family: 'Courier New', Courier, monospace;
             margin: 30px;
+            outline: none;
         }
     </style>
 
@@ -80,6 +84,7 @@
             } else {
                 entryArray.push({newEntry: entryToAdd});
                 inputText.value  = '';
+                displayText();
             }
             console.log(entryArray)
             
@@ -104,16 +109,23 @@
 
                 newText.innerText = entryArray[i].newEntry;
 
-                container.appendChild(newText);
                 
             }
+            container.appendChild(newText);
+
         }
 
         submitButton.addEventListener('click', submit);
+
         edit.addEventListener('click', editFunction);
         
 
+    //     submitButton.addEventListener('keypress', function(e){
+            //   if(e.key === 'Enter'){
+            //     submit();
         
+        //   }
+         // })
     </script>
 </body>
 </html>

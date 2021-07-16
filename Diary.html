@@ -56,6 +56,33 @@
             margin: 30px;
             outline: none;
         }
+
+        .spantText{
+            font-size: 10px;
+            margin: 50px;
+            color: grey;
+            margin: 1px solid grey;
+            background-color: rgb(238, 238, 238);
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .newText{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px solid grey;
+            border-bottom: 2px solid grey;
+            padding: 20px 0;
+            width: 750px;
+            transition: all 0.2s;
+            border-radius: 20px;
+
+        }
+
+        .newText:hover{
+            background: rgb(218, 218, 218);
+        }
     </style>
 
     <div class="input-Text">
@@ -114,20 +141,12 @@
 
                 var time = today.getHours() + ":" + today.getMinutes();
                 spanText.innerText = time;
-                spanText.style.fontSize = '10px'
-                spanText.style.margin = '50px'
-                spanText.style.color = 'grey'
-                spanText.style.border = '1px solid grey'
-                spanText.style.backgroundColor = 'rgb(185, 185, 185);k'
-                spanText.style.padding = '10px'
+                spanText.setAttribute('class', 'spantText');
+                newText.setAttribute('class', 'newText')
+      
 
                 newText.innerText = entryArray[i].newEntry;
-                newText.style.display = 'flex';
-                newText.style.justifyContent = 'space-between';
-                newText.style.alignItems = 'center';
-                newText.style.borderTop = '2px solid grey';
-                newText.style.padding = '20px 0'
-                newText.style.width = '750px'
+
 
 
 

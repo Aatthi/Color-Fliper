@@ -106,12 +106,24 @@
             var container = document.querySelector('.textDivContainer')
             for(i = 0; i < entryArray.length; i++){
                 var newText = document.createElement('p')
+                var spanText = document.createElement('span');
+                var today = new Date();
 
+                var time = today.getHours() + ":" + today.getMinutes();
+                spanText.innerText = time;
+                spanText.style.fontSize = '10px'
+                spanText.style.margin = '50px'
+                spanText.style.color = 'grey'
                 newText.innerText = entryArray[i].newEntry;
+                newText.style.display = 'flex';
+                newText.style.justifyContent = 'space-between';
+                newText.style.alignItems = 'center';
+                newText.style.width = '100%';
 
                 
             }
             container.appendChild(newText);
+            newText.appendChild(spanText);
 
         }
 

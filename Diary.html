@@ -27,6 +27,10 @@
             overflow: scroll;
         }
 
+        .textDivContainer::-webkit-scrollbar-thumb {
+            background: red;
+        }
+
         #main-text{
             text-align: ;
             border: 1px solid black;
@@ -65,6 +69,7 @@
             background-color: rgb(238, 238, 238);
             padding: 10px;
             border-radius: 20px;
+            text-align: center;
         }
 
         .newText{
@@ -73,7 +78,7 @@
             align-items: center;
             border-top: 2px solid grey;
             border-bottom: 2px solid grey;
-            padding: 20px 0;
+            padding: 20px;
             width: 750px;
             transition: all 0.2s;
             border-radius: 20px;
@@ -137,10 +142,13 @@
             for(i = 0; i < entryArray.length; i++){
                 var newText = document.createElement('p')
                 var spanText = document.createElement('span');
+                var dateText = document.createElement('span')
                 var today = new Date();
 
                 var time = today.getHours() + ":" + today.getMinutes();
-                spanText.innerText = time;
+                var date = today.getDay() + "/" + today.getMonth() + "/" + today.getFullYear();
+                spanText.innerText = time + " " + date;
+                // dateText.innerText = date; 
                 spanText.setAttribute('class', 'spantText');
                 newText.setAttribute('class', 'newText')
       
@@ -154,6 +162,7 @@
             }
             container.appendChild(newText);
             newText.appendChild(spanText);
+            // newText.appendChild(dateText);
 
         }
 

@@ -112,7 +112,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-               width: 50px;
+            width: 50px;
             height: 50px;
         }
     </style>
@@ -135,6 +135,7 @@
         var inputText= document.querySelector('#main-text');
         var submitButton = document.querySelector('#submit');
         var edit = document.querySelector('#edit');
+        
 
         var entryArray = []
 
@@ -160,7 +161,8 @@
                     var position = event.currentTarget.id.split('-')[1];
                     entryArray[position].newEntry = newToDoText
                     publishedText.innerText = editedEntry;
-                    publishedText.style.color = 'black'    
+                    publishedText.style.color = 'black';    
+                    displayText();
                 }
 
         }
@@ -173,6 +175,7 @@
                 var spanText = document.createElement('span');
                 var dateText = document.createElement('span');
                 var editButton = document.createElement('button');
+                
                 var editImg = document.createElement('img')
                 var today = new Date();
 
@@ -185,11 +188,11 @@
                 editButton.setAttribute('class', 'editButton');
                 
 
-                editButton.addEventListener('click', edit);
-                editButton.id = 'edit-' + i;
                 editImg.setAttribute('src', 'Icons/pencil.png');
                 editImg.setAttribute('class', 'editImg');
-                
+                editImg.addEventListener('click', editFunction)
+                editImg.id = 'edit-' + i; 
+    
 
                 newText.innerText = entryArray[i].newEntry;
 
@@ -198,6 +201,8 @@
 
                 
             }
+            
+
             container.appendChild(newText);
             newText.appendChild(spanText);
             newText.appendChild(editButton);
@@ -207,8 +212,8 @@
         }
 
         submitButton.addEventListener('click', submit);
-
-        edit.addEventListener('click', editFunction);
+        
+        // edit.addEventListener('click', editFunction);
         
 
     //     submitButton.addEventListener('keypress', function(e){

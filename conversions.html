@@ -8,30 +8,29 @@
 </head>
 <body>
   
-    <h1>The course Category is:<p class="p"></p></h1>
+    <h1>The World Cup dates from 2022-2050 are in:</h1>
     <button class="check">Check</button>
     
     <script>
-        var course = {
-            'tittle': 'Learn to Python',
-            'categories': ['python', 'programming', 'python'],
-            '5 stars r/v': 420,
-            '4 stars r/v': 320,
-            '3 stars r/v': 150,
-            '2 stars r/v': 70,
-            '1 stars r/v': 10
-        }
-
-        var para = document.querySelector('.p');
-
+        
         var checkButton = document.querySelector('.check');
+        var totalYears = 2050-2022;
 
         checkButton.addEventListener('click', () => {
-            para.innerHTML = course.categories[1];
+            for (i=2022; i<=2050; i+=4) {
+                var heading = document.querySelector('h1')
+                var para = document.createElement('p');
+                para.innerHTML = i;
+
+                heading.appendChild(para);
+
+            }
+     
         })
         
+       
         
-        
+
         
     </script>
 </body>

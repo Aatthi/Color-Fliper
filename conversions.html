@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <h1>The course Category is:<p class="p"></p></h1>
+    <button class="check">Check</button>
+    
+    <script>
+        var course = {
+            'tittle': 'Learn to Python',
+            'categories': ['python', 'programming', 'python'],
+            '5 stars r/v': 420,
+            '4 stars r/v': 320,
+            '3 stars r/v': 150,
+            '2 stars r/v': 70,
+            '1 stars r/v': 10
+        }
+
+        var para = document.querySelector('.p');
+
+        var checkButton = document.querySelector('.check');
+
+        checkButton.addEventListener('click', () => {
+            para.innerHTML = course.categories[1];
+        })
+        
+        
+        
+        
+    </script>
+</body>
+</html>

@@ -7,29 +7,75 @@
     <title>Document</title>
 </head>
 <body>
-  
-    <h1>The World Cup dates from 2022-2050 are in:</h1>
-    <button class="check">Check</button>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .scoreDiv{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        input{
+            margin: 20px ;
+            padding: 10px 20px;
+            font-size: 20px;
+        }
+
+        button{
+            padding: 10px 30px;
+            font-size: 20px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 20px;
+        }
+
+        
+    </style>
+    
+    <div class="scoreDiv">
+        <input id="grade1"type="text" placeholder="Grade 1">
+        <input id="grade2"type="text" placeholder="Grade 2">
+        <input id="attendance"type="text" placeholder="Attendance">
+        <button class="check">Calculate</button>
+
+    </div>
+
+
+
     
     <script>
+        var grade1 = document.querySelector('#grade1');
+        var grade2 = document.querySelector('#grade2');
+        var attendance = document.querySelector('#attendance');
+        var calculateButton = document.querySelector('.check');
+
         
-        var checkButton = document.querySelector('.check');
-        var totalYears = 2050-2022;
 
-        checkButton.addEventListener('click', () => {
-            for (i=2022; i<=2050; i+=4) {
-                var heading = document.querySelector('h1')
-                var para = document.createElement('p');
-                para.innerHTML = i;
+        calculateButton.addEventListener('click', () => {
 
-                heading.appendChild(para);
+        var average = (parseInt(grade2.value) + parseInt(grade1.value)) / 2;
+        var abscence = (attendance.value/20)
 
-            }
-     
+            console.log(average);
+            console.log(Math.floor(abscence * 100) + '%');
+
+        if (average > 6.5 && abscence > 0.7) {
+            console.log('you have passed')
+        } else {
+            console.log('you have failed');
+        }
         })
         
-       
-        
+
 
         
     </script>

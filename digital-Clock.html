@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=scr, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 700px;
+        }
+
+
+        .watch{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        span{
+            background: black;
+            color: white;
+            font-weight: 100;
+            font-size: 30px;
+            border: 1px solid white;
+            padding: 10px;
+            font-family: monospace;
+        }
+
+        
+    </style>
+    
+    <div class="watch">
+        <span id="hours"></span>
+        <span id="minutes"></span>
+        <span id="seconds"></span>
+
+    </div>
+
+    <script>
+
+
+        
+        
+        var secondsFunction = window.setInterval(function()
+        
+
+       {
+        
+        var hours = document.querySelector('#hours');
+        var minutes = document.querySelector('#minutes')
+        var seconds = document.querySelector('#seconds')
+
+
+        var currentDate = new Date()
+        
+
+        var currentTimeHours = currentDate.getHours();
+        var currentTimeMinutes = currentDate.getMinutes();
+        var currentTimeSeconds = currentDate.getSeconds();
+
+
+        hours.innerHTML = currentTimeHours;
+         minutes.innerHTML = currentTimeMinutes;
+         seconds.innerHTML = currentTimeSeconds;
+
+         if (currentTimeSeconds < 10){
+            seconds.innerHTML = '0'+ currentTimeSeconds;
+         } else if(currentTimeSeconds > 10) {
+             seconds.innerHTML = currentTimeSeconds;
+         }
+
+         if (currentTimeMinutes < 10){
+            minutes.innerHTML = '0'+ currentTimeMinutes;
+         } else if(currentTimeMinutes > 10) {
+            minutes.innerHTML = currentTimeMinutes;
+         }
+        
+
+
+       },1000)
+
+
+    </script>
+</body>
+</html>

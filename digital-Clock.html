@@ -11,8 +11,9 @@
     <style>
         body{
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
+            flex-direction: column;
             height: 700px;
         }
 
@@ -23,7 +24,7 @@
             align-items: center;
         }
         
-        span{
+        .watch span{
             background: black;
             color: white;
             font-weight: 100;
@@ -33,6 +34,22 @@
             font-family: monospace;
         }
 
+        .DeliveryOptionWrapper{
+            font-size: 20px;
+        }
+
+        #deliveryMethod{
+            padding: 5px 20px;
+        }
+
+        .displayDeliveryMethod{
+            border: 1px solid red;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+        }
+
         
     </style>
     
@@ -40,27 +57,50 @@
         <span id="hours"></span>
         <span id="minutes"></span>
         <span id="seconds"></span>
+    </div>
 
+    <div class="DeliveryOptionWrapper">
+        <label for="">Choose Delivery Method:</label>
+        <select name="Delivery Method" id="deliveryMethod">
+            <option value="Express">Express</option>
+            <option value="Standard">Standard</option>
+            <option value="Click & Collect">Click & Collect</option>
+        </select>
+    </div>
+
+    <div class="displayDeliveryMethod">
+        <span id="chosenDeliveryMethod"></span>
+        <span id="ExpectedDateOfDelivery"></span>
+        <span id="DeliveryFee"></span>
     </div>
 
     <script>
+        var deliveryMethod = document.querySelector('#deliveryMethod');
+        var chosenDeliveryMethod = document.querySelector('#chosenDeliveryMethod');
+        var ExpectedDateOfDelivery = document.querySelector('#ExpectedDateOfDelivery');
+        var DeliveryFee = document.querySelector('#DeliveryFee');
+        
 
+        
+            for (a = 0; a < deliveryMethod.length; a++ ){
+                deliveryMethod[a].addEventListener('change', function() {
+                    console.log(deliveryMethod[a].value)
+                })
+        }
+        
+         
 
-        
-        
-        var secondsFunction = window.setInterval(function()
-        
+    </script>
 
-       {
-        
+    <script>
+
+        var secondsFunction = window.setInterval(function() {
+
         var hours = document.querySelector('#hours');
         var minutes = document.querySelector('#minutes')
         var seconds = document.querySelector('#seconds')
 
-
         var currentDate = new Date()
-        
-
         var currentTimeHours = currentDate.getHours();
         var currentTimeMinutes = currentDate.getMinutes();
         var currentTimeSeconds = currentDate.getSeconds();
@@ -81,11 +121,8 @@
          } else if(currentTimeMinutes > 10) {
             minutes.innerHTML = currentTimeMinutes;
          }
-        
-
 
        },1000)
-
 
     </script>
 </body>

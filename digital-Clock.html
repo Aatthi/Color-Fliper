@@ -48,6 +48,15 @@
             justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
+            width: 600px;
+            height: 600px;
+            
+        }
+
+        .displayDeliveryMethod span{
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         
@@ -69,9 +78,9 @@
     </div>
 
     <div class="displayDeliveryMethod">
-        <span id="chosenDeliveryMethod"></span>
-        <span id="ExpectedDateOfDelivery"></span>
-        <span id="DeliveryFee"></span>
+        <span id="chosenDeliveryMethod">Chosen Delivery Method: </span>
+        <span id="ExpectedDateOfDelivery">Expected Date Of Delivery: </span>
+        <span id="DeliveryFee">Delivery Fee: </span>
     </div>
 
     <script>
@@ -80,13 +89,34 @@
         var ExpectedDateOfDelivery = document.querySelector('#ExpectedDateOfDelivery');
         var DeliveryFee = document.querySelector('#DeliveryFee');
         
+        var DeliveryPara = document.createElement('p');
+        var DatePara = document.createElement('p');
+        var FeePara = document.createElement('p');
 
+
+        DeliveryPara.style.fontWeight = '900';
+        DatePara.style.fontWeight = '900'
+        DatePara.style.fontWeight = '900'
+
+        deliveryMethod.addEventListener('change', function() {
+            
+            for (a = 0; a < deliveryMethod.length; a++){
+                DeliveryPara.innerHTML = ' ' + deliveryMethod.value;
+                chosenDeliveryMethod.appendChild(DeliveryPara) 
+            }
+
+            if (deliveryMethod.value === 'Standard') {
+
+                var today = new Date(); 
+                var expectedStandardDate = today.getDay();
+                console.log(expectedStandardDate);
+                DeliveryPara.innerHTML = ' ' + deliveryMethod.value;
+            }
+           
+
+            
+        })
         
-            for (a = 0; a < deliveryMethod.length; a++ ){
-                deliveryMethod[a].addEventListener('change', function() {
-                    console.log(deliveryMethod[a].value)
-                })
-        }
         
          
 

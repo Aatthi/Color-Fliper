@@ -122,7 +122,10 @@
         startTime,
         CurrentTime,
         elaspedTime = 0,
-        clockInterval;
+        clockInterval,
+        hours,
+        minutes,
+        seconds;
         
         document.querySelector('.start_stop').onclick = function() {
             if (!isRunning){
@@ -144,6 +147,16 @@
 
                     document.getElementById('watch').innerHTML = elaspedTime;
 
+                    hours = Math.floor(elaspedTime / 3600000);
+                    remainder = elaspedTime - (hours * 3600000)
+
+                    minutes = Math.floor(remainder / 6000);
+                    remainder -= (minutes * 6000);
+
+                    seconds = Math.floor(remainder / 1000);
+                    remainder -= (seconds * 1000);
+                    
+          
 
                 }, 100);
 
@@ -238,35 +251,35 @@
 
     <script>
 
-        var secondsFunction = window.setInterval(function() {
+    //     var secondsFunction = window.setInterval(function() {
 
-        var hours = document.querySelector('#hours');
-        var minutes = document.querySelector('#minutes')
-        var seconds = document.querySelector('#seconds')
+    //     var hours = document.querySelector('#hours');
+    //     var minutes = document.querySelector('#minutes')
+    //     var seconds = document.querySelector('#seconds')
 
-        var currentDate = new Date()
-        var currentTimeHours = currentDate.getHours();
-        var currentTimeMinutes = currentDate.getMinutes();
-        var currentTimeSeconds = currentDate.getSeconds();
+    //     var currentDate = new Date()
+    //     var currentTimeHours = currentDate.getHours();
+    //     var currentTimeMinutes = currentDate.getMinutes();
+    //     var currentTimeSeconds = currentDate.getSeconds();
 
 
-        hours.innerHTML = currentTimeHours;
-         minutes.innerHTML = currentTimeMinutes;
-         seconds.innerHTML = currentTimeSeconds;
+    //     hours.innerHTML = currentTimeHours;
+    //      minutes.innerHTML = currentTimeMinutes;
+    //      seconds.innerHTML = currentTimeSeconds;
 
-         if (currentTimeSeconds < 10){
-            seconds.innerHTML = '0'+ currentTimeSeconds;
-         } else if(currentTimeSeconds > 10) {
-             seconds.innerHTML = currentTimeSeconds;
-         }
+    //      if (currentTimeSeconds < 10){
+    //         seconds.innerHTML = '0'+ currentTimeSeconds;
+    //      } else if(currentTimeSeconds > 10) {
+    //          seconds.innerHTML = currentTimeSeconds;
+    //      }
 
-         if (currentTimeMinutes < 10){
-            minutes.innerHTML = '0'+ currentTimeMinutes;
-         } else if(currentTimeMinutes > 10) {
-            minutes.innerHTML = currentTimeMinutes;
-         }
+    //      if (currentTimeMinutes < 10){
+    //         minutes.innerHTML = '0'+ currentTimeMinutes;
+    //      } else if(currentTimeMinutes > 10) {
+    //         minutes.innerHTML = currentTimeMinutes;
+    //      }
 
-       },1000)
+    //    },1000)
 
     </script>xz `
 

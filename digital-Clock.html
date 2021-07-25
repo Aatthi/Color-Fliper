@@ -14,7 +14,7 @@
             justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
-            height: 700px;
+            height: 1000px;
         }
 
 
@@ -59,14 +59,197 @@
             align-items: center;
         }
 
+        .optionWrapper{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            margin: 30px;
+        }
+
+        .imageWrapper{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 500px;
+            width: 500px;
+            border: 1px solid red;
+        }
+        #phoneImg{
+            height: 400px;
+            width: 500px;
+        }
+
+        .stopWatchWrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: black;
+            color: white;
+            margin: 30px;
+        }
+
+        #stopWatch{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .stopWatchWrapper p{
+            margin: 0;
+            font-size: 30px;
+        }
+
+
+
         
     </style>
+
+    <div class="stopWatchWrapper">
+        <div>
+            <p id="watch"></p>
+        </div>
+            
+        <div>
+            <button class="start_stop" >Start</button>
+            <button class="reset">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        
+        var isRunning = false,
+        startTime,
+        CurrentTime,
+        elaspedTime;
+        
+        document.querySelector('.start_stop').onclick = function() {
+            if (!isRunning){
+                // start clock
+                isRunning = true;
+
+                startTime = new Date().getTime();
+
+                window.setInterval(function(){
+
+                    CurrentTime = new Date().getTime(); 
+                    elaspedTime = CurrentTime - startTime;
+
+                    document.getElementById('watch').innerHTML = elaspedTime;
+
+
+                }, 100);
+
+            } else{
+                //stop clock
+                isRunning = false;
+            }
+        }
+
+
+        var resetButton = document.querySelector('.reset')
+    
+
+        
+    
+       
+    </script>
+
+
+
+    <div class="imageWrapper">
+        <img id="phoneImg" src="images/iphone.jpg" alt="">
+    </div>
+
+    <div class="optionWrapper">
+ 
+        <div class="iPhoneDiv">
+            <input class="inputButton" type="radio" name="phone" id="iPhone" value="iPhone" checked>
+            <label for="">iPhone</label>
+        </div>
+        <div class="iPhoneDiv">
+            <input class="inputButton" type="radio" name="phone" id="pixel" value="pixel">
+            <label for="">Google Pixel</label>
+        </div>
+        <div class="iPhoneDiv">
+            <input class="inputButton" type="radio" name="phone" id="samsung" value="samsung">
+            <label for="">Samsung</label>
+        </div>
+    </div>
+
+    <script>
+        var iPhone = document.querySelector('#iPhone');
+        var pixel = document.querySelector('#pixel');
+        var samsung = document.querySelector('#samsung');
+        var phoneImg = document.querySelector('#phoneImg');
+        var inputsButton = document.querySelector('.inputButton')
+        
+
+        inputsButton.addEventListener('click', () => {
+            const phones = document.querySelectorAll('input[name="phone"]'); 
+            let selectedValue;
+            for (const phone of phones) {
+                if (phone.checked) {
+                    selectedValue = phone.value;
+                    break;
+                }
+            }
+        });
+
+        iPhone.addEventListener('click', () => {
+            phoneImg.setAttribute('src', 'images/iphone.jpg')
+        })
+
+        pixel.addEventListener('click', () => {
+            phoneImg.setAttribute('src', 'images/pixel.jpg')
+        })
+
+        samsung.addEventListener('click', () => {
+            phoneImg.setAttribute('src', 'images/samsung.jpg')
+        })
+
+    </script>
+
     
     <div class="watch">
         <span id="hours"></span>
         <span id="minutes"></span>
         <span id="seconds"></span>
     </div>
+
+    <script>
+
+        var secondsFunction = window.setInterval(function() {
+
+        var hours = document.querySelector('#hours');
+        var minutes = document.querySelector('#minutes')
+        var seconds = document.querySelector('#seconds')
+
+        var currentDate = new Date()
+        var currentTimeHours = currentDate.getHours();
+        var currentTimeMinutes = currentDate.getMinutes();
+        var currentTimeSeconds = currentDate.getSeconds();
+
+
+        hours.innerHTML = currentTimeHours;
+         minutes.innerHTML = currentTimeMinutes;
+         seconds.innerHTML = currentTimeSeconds;
+
+         if (currentTimeSeconds < 10){
+            seconds.innerHTML = '0'+ currentTimeSeconds;
+         } else if(currentTimeSeconds > 10) {
+             seconds.innerHTML = currentTimeSeconds;
+         }
+
+         if (currentTimeMinutes < 10){
+            minutes.innerHTML = '0'+ currentTimeMinutes;
+         } else if(currentTimeMinutes > 10) {
+            minutes.innerHTML = currentTimeMinutes;
+         }
+
+       },1000)
+
+    </script>xz `
 
     <div class="DeliveryOptionWrapper">
         <label for="">Choose Delivery Method:</label>
@@ -122,38 +305,6 @@
 
     </script>
 
-    <script>
 
-        var secondsFunction = window.setInterval(function() {
-
-        var hours = document.querySelector('#hours');
-        var minutes = document.querySelector('#minutes')
-        var seconds = document.querySelector('#seconds')
-
-        var currentDate = new Date()
-        var currentTimeHours = currentDate.getHours();
-        var currentTimeMinutes = currentDate.getMinutes();
-        var currentTimeSeconds = currentDate.getSeconds();
-
-
-        hours.innerHTML = currentTimeHours;
-         minutes.innerHTML = currentTimeMinutes;
-         seconds.innerHTML = currentTimeSeconds;
-
-         if (currentTimeSeconds < 10){
-            seconds.innerHTML = '0'+ currentTimeSeconds;
-         } else if(currentTimeSeconds > 10) {
-             seconds.innerHTML = currentTimeSeconds;
-         }
-
-         if (currentTimeMinutes < 10){
-            minutes.innerHTML = '0'+ currentTimeMinutes;
-         } else if(currentTimeMinutes > 10) {
-            minutes.innerHTML = currentTimeMinutes;
-         }
-
-       },1000)
-
-    </script>
 </body>
 </html>

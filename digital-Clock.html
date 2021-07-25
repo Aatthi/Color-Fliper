@@ -88,20 +88,29 @@
             background: black;
             color: white;
             margin: 30px;
+            border-radius: 10px;
         }
 
         #stopWatch{
             display: flex;
             justify-content: center;
             align-items: center;
+         
         }
         .stopWatchWrapper p{
             margin: 0;
             font-size: 30px;
+            padding: 10px 20px;
+            font-family: monospace;
         }
 
 
-
+        .stopWatchWrapper button{
+            padding: 10px 30px;
+            border: none;
+            background: rgba(236, 236, 236, 0.658);
+            border-radius: 20px;
+        }
         
     </style>
 
@@ -125,7 +134,9 @@
         clockInterval,
         hours,
         minutes,
-        seconds;
+        seconds,
+        remainder, 
+        formattedTime;
         
         document.querySelector('.start_stop').onclick = function() {
             if (!isRunning){
@@ -145,7 +156,7 @@
                     CurrentTime = new Date().getTime(); 
                     elaspedTime = CurrentTime - startTime;
 
-                    document.getElementById('watch').innerHTML = elaspedTime;
+                    
 
                     hours = Math.floor(elaspedTime / 3600000);
                     remainder = elaspedTime - (hours * 3600000)
@@ -156,6 +167,9 @@
                     seconds = Math.floor(remainder / 1000);
                     remainder -= (seconds * 1000);
                     
+                    formattedTime = hours.toString() + " : " + minutes.toString() + " : " + seconds.toString() + " : " + remainder.toString();
+
+                    document.getElementById('watch').innerHTML = formattedTime;
           
 
                 }, 100);

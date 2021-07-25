@@ -121,15 +121,21 @@
         var isRunning = false,
         startTime,
         CurrentTime,
-        elaspedTime,
+        elaspedTime = 0,
         clockInterval;
         
         document.querySelector('.start_stop').onclick = function() {
             if (!isRunning){
                 // start clock
                 isRunning = true;
+                if (elaspedTime == 0){
 
-                startTime = new Date().getTime();
+                    startTime = new Date().getTime();
+
+                } else {
+                    startTime = new Date().getTime() - elaspedTime;
+
+                }
 
                 clockInterval = window.setInterval(function(){
 
@@ -149,8 +155,14 @@
         }
 
         document.querySelector('.reset').onclick = function() {
-            startTime = new Date().getTime();
+            window.clearInterval(clockInterval)
 
+            startTime = new Date().getTime();
+            if (!isRunning){
+                elaspedTime = 0;
+                document.getElementById('watch').innerHTML = elaspedTime;
+
+            }
         }
 
 

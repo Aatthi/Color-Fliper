@@ -121,7 +121,8 @@
         var isRunning = false,
         startTime,
         CurrentTime,
-        elaspedTime;
+        elaspedTime,
+        clockInterval;
         
         document.querySelector('.start_stop').onclick = function() {
             if (!isRunning){
@@ -130,7 +131,7 @@
 
                 startTime = new Date().getTime();
 
-                window.setInterval(function(){
+                clockInterval = window.setInterval(function(){
 
                     CurrentTime = new Date().getTime(); 
                     elaspedTime = CurrentTime - startTime;
@@ -142,6 +143,7 @@
 
             } else{
                 //stop clock
+                window.clearInterval(clockInterval)
                 isRunning = false;
             }
         }

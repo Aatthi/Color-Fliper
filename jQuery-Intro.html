@@ -82,11 +82,70 @@
             </div>
             </div>
 
+            <style>
+                .cssModifierJQ{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .cssModifierJQ p{
+                    padding: 10px 30px;
+                    width: 300px;
+                    background: black;
+                    color: white;
+                    font-family: monospace;
+                    border-radius: 20px;
+                    font-size: 20px;
+                }
+
+                .cssModifierJQDiv{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .cssModifierJQDiv button{
+                    margin: 10px 30px;
+                    transition: all 0.3s;
+                }
+
+                .cssModifierJQDiv button:hover{
+                    background: rgb(129, 189, 69);
+
+                }
+
+            </style>
+
+            <div class="cssModifierJQ">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, consequatur.</p>
+
+                <div class="cssModifierJQDiv">
+                <button id="addClass">Add class</button>
+                <button id="removeClass">Remove class</button>
+                <button id="toggleClass">Toggle class</button>
+                </div>
+
+            </div>
+
         
 
     </div>
 
     <script> 
+        $("#addClass").click(function(){
+            console.log('Add clicked')
+        });
+
+        $("#removeClass").click(function(){
+            console.log('Remove clicked')
+        });
+
+        $("#toggleClass").click(function(){
+            console.log('Toggle clicked')
+        });
+        
         $(".checkBoxInp").css("display", "flex");
         $(".checkBoxInp").css("flex-direction", "column");
         $(".checkBoxInp").change(function() {

@@ -139,11 +139,70 @@
 
             </div>
 
+            <style>
+                .hiddenButtonDiv{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                }
+
+                .hiddenButtonDiv input{
+                    padding: 10px 20px;
+                    font-size: 20px;
+                    font-family: monospace;
+                }
+
+                .hiddenButtonDiv button{
+                    padding: 10px 20px;
+                    font-size: 30px;
+                    background: darkorange;
+                    font-weight: 800;
+                    margin: 10px;
+                    border-radius: 20px;
+                    border: none;
+                    transition: all 0.3;
+                }
+
+                .newStyling{
+                    display: flex;
+                    padding: 10px 20px;
+                    font-size: 30px;
+                    background: rgb(0, 153, 255);
+                    font-weight: 800;
+                    margin: 10px;
+                    border-radius: 20px;
+                    border: none;
+                    transition: all 0.3;
+                }
+            </style>
+            <div class="hiddenButtonDiv">
+                <input id="inputText" type="text">
+                <button id="hiddenButto" style="display:none">Search</button>
+            </div>
         
 
     </div>
 
     <script> 
+        $("#inputText").on({
+            click: function(){
+                console.log('clicked')
+            },
+
+            input: function(){
+                console.log('changed')
+                var selectedInput =  $("#hiddenButto")
+                $("#hiddenButto").css("display", "flex")
+
+                if(!$(this).val()){
+                    $("#hiddenButto").toggle(250);
+                } 
+            }
+        });
+
+
+
         $("#addClass").click(function(){
             console.log('Add clicked')
             $("p").addClass("styling");
@@ -156,8 +215,8 @@
 
         $("#toggleClass").click(function(){
             $("p").toggleClass("styling");
-            $("#addclass").hide();
-            $("removeClass").hide();
+            $("#addClass").hide();
+            $("#removeClass").hide();
         });
         
         $(".checkBoxInp").css("display", "flex");

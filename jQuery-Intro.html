@@ -139,6 +139,19 @@
 
             </div>
 
+            <div class="writtingDiv" style="width:700px; display:flex; justify-content:center; align-items:center; flex-direction: column;">
+                <button id="TabButton">Tab</button>
+                <p style="display:none">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam temporibus repudiandae provident, quaerat iste suscipit enim esse ullam impedit sequi aut repellat? Ullam consequatur ratione sint modi dolorem eius officia?</p>
+            </div>
+
+            <script>
+                $("#TabButton").click(function() {
+                   
+                   $("p").slideToggle();
+                })
+            </script>
+
+
             <style>
                 .hiddenButtonDiv{
                     display: flex;

@@ -90,12 +90,22 @@
                     align-items: center;
                 }
 
-                .cssModifierJQ p{
+                .para{
                     padding: 10px 30px;
                     width: 300px;
                     background: black;
                     color: white;
                     font-family: monospace;
+                    border-radius: 20px;
+                    font-size: 20px;
+                }
+
+                .styling{
+                    padding: 10px 30px;
+                    width: 300px;
+                    background: white;
+                    color: black;
+                    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
                     border-radius: 20px;
                     font-size: 20px;
                 }
@@ -119,7 +129,7 @@
             </style>
 
             <div class="cssModifierJQ">
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, consequatur.</p>
+                <p class="para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, consequatur.</p>
 
                 <div class="cssModifierJQDiv">
                 <button id="addClass">Add class</button>
@@ -136,14 +146,18 @@
     <script> 
         $("#addClass").click(function(){
             console.log('Add clicked')
+            $("p").addClass("styling");
         });
 
         $("#removeClass").click(function(){
             console.log('Remove clicked')
+            $("p").removeClass("styling");
         });
 
         $("#toggleClass").click(function(){
-            console.log('Toggle clicked')
+            $("p").toggleClass("styling");
+            $("#addclass").hide();
+            $("removeClass").hide();
         });
         
         $(".checkBoxInp").css("display", "flex");

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 600px;
+        }
+
+        button{
+            padding: 10px 30px;
+            background: chartreuse;
+            border: none;
+            font-size: 20px;
+            font-weight: 800;
+        }
+    </style>
+    <div>
+        <button class="example" id="one">1</button>
+        <button class="example" id="two">2</button>
+        <button class="example" id="three">3</button>
+        <button class="example" id="three">4</button>
+        <button class="example" id="three">5</button>
+        <button class="example" id="three">6</button>
+        <button id="hide">Hide</button>
+
+        <h1 id="text">Hi my Name is <b>Aatthi</b> </h1>
+        <img class="image" src="Images/pixel.jpg" alt="">
+
+        <label for="">Choose something:</label> 
+        <select name="" id="options">
+            <option value="Car">Car</option>
+            <option value="Plane" selected>Plane</option>
+            <option value="Boat">Boat</option>
+        </select>
+
+        <!-- <div class="radioInp">
+        <div>
+        <input type="radio" name="superpower" id="" value="Speed of Light">
+        <label for="">Speed of Light</label>
+        </div>
+        <div>
+        <input type="radio" name="superpower" id="" value="Fly">
+        <label for="">Fly</label>
+        </div>
+        <div>
+        <input type="radio" name="superpower" id="" value="Teleport">
+        <label for="">Teleport</label>
+        </div>
+        <div>
+        <input type="radio" name="superpower" id="" value="Agile">
+        <label for="">Agile</label>
+        </div>
+        </div> -->
+
+        <div class="checkBoxInp">
+            <div>
+            <input type="checkbox" name="superpower" id="" value="Speed of Light">
+            <label for="">Speed of Light</label>
+            </div>
+            <div>
+            <input type="checkbox" name="superpower" id="" value="Fly">
+            <label for="">Fly</label>
+            </div>
+            <div>
+            <input type="checkbox" name="superpower" id="" value="Teleport">
+            <label for="">Teleport</label>
+            </div>
+            <div>
+            <input type="checkbox" name="superpower" id="" value="Agile">
+            <label for="">Agile</label>
+            </div>
+            </div>
+
+        
+
+    </div>
+
+    <script> 
+        $(".checkBoxInp").css("display", "flex");
+        $(".checkBoxInp").css("flex-direction", "column");
+        $(".checkBoxInp").change(function() {
+            var slectedCheckBoxes = $("input[name='superpower']:checked");
+            $.each(slectedCheckBoxes, function(index, value){
+                console.log($(value).parent().text());
+            });
+        });
+
+        // $(".radioInp").css("display", "flex");
+        // $(".radioInp").css("flex-direction", "column");
+        // $(".radioInp").change(function() {
+        //     console.log($("input[name='superpower']:checked").val());
+        // });
+        
+        // $("#options").change(function(e) {
+        //     var newValue = $("#options option:selected").text();
+        //     console.log(this);
+        // });
+        
+
+        $('#hide').click( function () { // an onclick function for the hide button
+            $(".example").hide(); // display: none function for the hide button
+            //element.style.property is the same as element.css("property", "value");
+        } );
+
+        $('#hide').mouseleave( function () { // an onclick function for the hide button
+            $(".example").css("property", "block"); // display: none function for the hide button
+            //element.style.property is the same as element.css("property", "value");
+        } );
+
+        var text = $('#text').text(); // innerHTML select & change the innerHTML
+        console.log(text);
+
+        $(".image").click(function() {
+            $(".image").attr("src", "Images/iphone.jpg")
+        })
+    </script>
+</body>
+</html>

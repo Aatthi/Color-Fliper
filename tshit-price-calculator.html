@@ -9,9 +9,9 @@
 </head>
 <body>
     <style>
-        body{
+        /* body{
             padding: 0 200px;
-        }
+        } */
         h1{
             display: flex;
             font-family: monospace;
@@ -44,8 +44,8 @@ font-size: 40px;}
                 </div>
 
                 <div class="FabricQualityWrapper">
-                    <button>Normal (150g / m2)</button>
-                    <button>High (190g / m2</button>
+                    <button id="NQ">Normal Quality (150g / m2)</button>
+                    <button id="HQ">High Quality (190g / m2)</button>
                 </div>
 
                 <div class="styleWrapper">
@@ -61,7 +61,7 @@ font-size: 40px;}
 
                 <div class="imageWrapper">  
 
-                    <img src="" alt="" width="500px" height="500px; border: none;" >
+                    <img src="" alt="" width="400px" height="400px"; style="border: none; margin: 0 50px ">
 
                 </div>
 
@@ -91,7 +91,7 @@ font-size: 40px;}
         $("#shirtQuanitity").on({
             input: function() {
                 var shirtQuantity = $("#shirtQuanitity").val();
-                $("#productQuantity").text(shirtQuantity);
+                $("#productQuantity").text(" " + shirtQuantity);
             },
 
             click: function() {
@@ -112,6 +112,21 @@ font-size: 40px;}
             $("#productColor").text( " " + colourValue)
         })
 
+
+        $("#NQ").click(function() {
+            var qualityText = $("#NQ").text()
+            $("#productQuality").text(" " + qualityText);
+            console.log('clicked');
+
+        })
+
+        $("#HQ").click(function() {
+            var qualityText = $("#HQ").text()
+            $("#productQuality").text(" " + qualityText);
+            console.log('clicked');
+
+        })
+        
        
 
 

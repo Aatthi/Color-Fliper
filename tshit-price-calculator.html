@@ -89,16 +89,47 @@ font-size: 40px;}
 
     <script>
 
-         
-        var HQ = 10;
-        var NQ = 5;
-        var colour = 6;
-        var white = 3; 
-        var plain = 10; 
-        var printed = 15
+        var costArray = [];
+        var sum = 0; 
+
+        optionValueFunction();
+        buttonValueFunction();
+
+        $("completeOrderButton").click(updateCost());
+        
+        
+
+       function buttonValueFunction() {
+        $("button").click(function () {
+              var buttonValue = $(this).val();
+              console.log(buttonValue)
+              costArray.push(parseInt(buttonValue));
+              console.log(costArray)
+            }) 
+       }
+
+       function optionValueFunction() {
+        $("option").click(function () {
+              var optionValue = $(this).val();
+              console.log(optionValue)
+              costArray.push(parseInt(optionValue));
+              console.log(costArray)
+       });
+    }
+        
+        
+        
 
         function updateCost() {
-            var totalCost; 
+           
+            
+            for (let i = 0; i < costArray.length; i++) {
+                sum += array[i];
+                console.log(sum);
+
+            }
+            
+
         }
 
         $("#shirtQuanitity").on({

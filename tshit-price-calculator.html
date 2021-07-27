@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-Shirt Price</title>
+</head>
+<body>
+    <style>
+        body{
+            padding: 0 200px;
+        }
+        h1{
+            display: flex;
+            font-family: monospace;
+justify-content: center;
+align-items: center;        
+font-size: 40px;}
+
+        button{
+            padding: 10px 20px;
+            border: none    ;
+        }
+
+        button:hover{
+            background-color: rgb(217, 217, 224);
+        }
+
+        
+    </style>
+    <h1>Quotation</h1>
+    <div class="wrapper" style="display:flex; justify-content: center; align-items: center; flex-direction: column; font-family: monospace;">
+            <div class="optionWapper" style="display:flex; justify-content: space-evenly; align-items: center; width: 100%; background: ghostwhite; padding: 30px 50px;" >
+                <div class="qunatityWrapper" style="display:flex; justify-content: center; align-items: center; flex-direction: column;">
+                    <label for="" style="margin: 10px 0;">Quantity</label>
+                    <input type="number" style="font-size: 20px; padding: 5px 10px; border: none;" id="shirtQuanitity">
+                </div>
+
+                <div class="colorWrapper">
+                    <button id="whiteTShirt">White</button>
+                    <button  id="colouredTShirt">Coloured</button>
+                </div>
+
+                <div class="FabricQualityWrapper">
+                    <button>Normal (150g / m2)</button>
+                    <button>High (190g / m2</button>
+                </div>
+
+                <div class="styleWrapper">
+                    <label for="">Style</label>
+                    <Select>
+                        <option value="Printed">Printed</option>
+                        <option value="Plain" selected>Plain</option>
+                    </Select>
+                </div>
+            </div>
+
+            <div class="displayWrapper "style="display:flex; justify-content: space-evenly; align-items: center;">
+
+                <div class="imageWrapper">  
+
+                    <img src="" alt="" width="500px" height="500px; border: none;" >
+
+                </div>
+
+
+                <div class="productDescriptionwrapper">
+                    <div class="orderDetailsWrapper" >
+
+                        <p><strong>Product:</strong><span id="productDescription"></span></p>
+
+                        <p><strong>Style:</strong><span id="productStyle"></span></p>
+                        
+                        <p><strong>Quality:</strong><span id="productQuality"></span></p>
+
+                        <p><strong>Color:</strong><span id="productColor"></span></p>
+
+                        <p><strong>Quantity:</strong><span id="productQuantity"></span></p>
+
+                        <p><strong>Total Cost:</strong><span id="productTotalCost"></span></p>
+
+                        <button id="completeOrderButton" style="padding: 30px 50px; font-size: 30px; background: lawngreen;">Complete Order</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <script>
+        $("#shirtQuanitity").on({
+            input: function() {
+                var shirtQuantity = $("#shirtQuanitity").val();
+                $("#productQuantity").text(shirtQuantity);
+            },
+
+            click: function() {
+                console.log("clicked")
+            }
+            
+        });
+
+        $("#colouredTShirt").click(function() {
+            var colourValue =  $("#colouredTShirt").text()
+            console.log(colourValue)
+            $("#productColor").text( " " + colourValue)
+        })
+
+        $("#whiteTShirt").click(function() {
+            var colourValue =  $("#whiteTShirt").text()
+            console.log(colourValue)
+            $("#productColor").text( " " + colourValue)
+        })
+
+       
+
+
+    </script>
+    
+</body>
+</html>

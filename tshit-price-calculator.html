@@ -39,21 +39,21 @@ font-size: 40px;}
                 </div>
 
                 <div class="colorWrapper">
-                    <button id="whiteTShirt">White</button>
-                    <button  id="colouredTShirt">Coloured</button>
+                    <button id="whiteTShirt" value="3">White</button>
+                    <button  id="colouredTShirt" value="6">Coloured</button>
                 </div>
 
                 <div class="FabricQualityWrapper">
-                    <button id="NQ">Normal Quality (150g / m2)</button>
-                    <button id="HQ">High Quality (190g / m2)</button>
+                    <button id="NQ" value="5">Normal Quality (150g / m2)</button>
+                    <button id="HQ" value="10">High Quality (190g / m2)</button>
                 </div>
 
                 <div class="styleWrapper">
                     <label for="">Style</label>
-                    <Select>
-                        <option value="Printed">Printed</option>
-                        <option value="Plain" selected>Plain</option>
-                    </Select>
+                    <select name="" id="shirtType">
+                        <option value="15">Printed</option>
+                        <option value="10" selected>Plain</option>
+                    </select>
                 </div>
             </div>
 
@@ -88,6 +88,19 @@ font-size: 40px;}
     </div>
 
     <script>
+
+         
+        var HQ = 10;
+        var NQ = 5;
+        var colour = 6;
+        var white = 3; 
+        var plain = 10; 
+        var printed = 15
+
+        function updateCost() {
+            var totalCost; 
+        }
+
         $("#shirtQuanitity").on({
             input: function() {
                 var shirtQuantity = $("#shirtQuanitity").val();
@@ -126,8 +139,14 @@ font-size: 40px;}
             console.log('clicked');
 
         })
+
+        $("#shirtType").change(function() {
+            var shirtTypeValue = $("#shirtType").text(); 
+            console.log(shirtTypeValue)
+            $("#productStyle").text(shirtTypeValue);
+        })
         
-       
+        
 
 
     </script>

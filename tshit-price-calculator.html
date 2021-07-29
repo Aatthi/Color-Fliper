@@ -88,9 +88,16 @@ font-size: 40px;}
     </div>
 
     <script>
-
         var costArray = [];
         var sum = 0; 
+
+         
+        var HQ = 10;
+        var NQ = 5;
+        var colour = 6;
+        var white = 3; 
+        var plain = 10; 
+        var printed = 15
 
         optionValueFunction();
         buttonValueFunction();
@@ -116,21 +123,18 @@ font-size: 40px;}
               console.log(costArray)
        });
     }
-        
-        
-        
 
-        function updateCost() {
+    function updateCost() {
            
             
-            for (let i = 0; i < costArray.length; i++) {
-                sum += array[i];
-                console.log(sum);
+           for (let i = 0; i < costArray.length; i++) {
+               sum += array[i];
+               console.log(sum);
 
-            }
-            
+           }
+           
 
-        }
+       }
 
         $("#shirtQuanitity").on({
             input: function() {

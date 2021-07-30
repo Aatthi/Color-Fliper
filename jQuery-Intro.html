@@ -197,6 +197,30 @@
 
     </div>
 
+
+    <div class="submitNameWrapper">
+        <input id = "inputName" type="text">
+        <button id="submitName">Submit</button>
+        <p id="name"></p>
+
+        <script>
+
+            
+            $("#submitName").click(function(){
+                var newName = $("#inputName").val();
+                if (!newName) {
+                    alert("please enter name")
+                } else {
+                    localStorage.setItem('name', newName);
+                    
+                    $("#name").text("Welcome " + localStorage.name);
+                 
+                }
+            });
+        </script>
+
+    </div>
+
     <script> 
         $("#inputText").on({
             click: function(){

@@ -199,12 +199,19 @@
 
 
     <div class="submitNameWrapper">
-        <input id = "inputName" type="text">
-        <button id="submitName">Submit</button>
-        <p id="name"></p>
+
+        <div class="inputDiv">
+            <input id = "inputName" type="text">
+            <button id="submitName">Submit</button>
+        </div>
+        <div id="paraDiv">
+            <p id="name"></p>
+            <p id="notPara"></p>
+        </div>
+
 
         <script>
-
+            $("#paraDiv").hide();
             
             $("#submitName").click(function(){
                 var newName = $("#inputName").val();
@@ -212,11 +219,20 @@
                     alert("please enter name")
                 } else {
                     localStorage.setItem('name', newName);
-                    
+                    $("#paraDiv").show();
+                                      
                     $("#name").text("Welcome " + localStorage.name);
-                 
-                }
+                    $("#notPara").text("Not " + localStorage.name + "?");
+                    $("#inputName").val(""); 
+                    $(".inputDiv").hide();
+             }
             });
+
+
+            $("#notPara").click(function() {
+                localStorage.removeItem("name")
+                $("#paraDiv").hide();
+            })
         </script>
 
     </div>

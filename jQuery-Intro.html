@@ -211,28 +211,36 @@
 
 
         <script>
-            $("#paraDiv").hide();
             
+    
             $("#submitName").click(function(){
-                var newName = $("#inputName").val();
-                if (!newName) {
+                var name = $("#inputName").val();
+                if (!name) {
                     alert("please enter name")
                 } else {
-                    localStorage.setItem('name', newName);
-                    $("#paraDiv").show();
-                                      
+                    localStorage.setItem('name', name);
+   
                     $("#name").text("Welcome " + localStorage.name);
                     $("#notPara").text("Not " + localStorage.name + "?");
                     $("#inputName").val(""); 
                     $(".inputDiv").hide();
+                    $("#paraDiv").show();
              }
             });
-
 
             $("#notPara").click(function() {
                 localStorage.removeItem("name")
                 $("#paraDiv").hide();
+                $(".inputDiv").show();
             })
+
+            if (localStorage.name){
+                $(".inputDiv").hide();
+                $("#name").text("Welcome " + localStorage.name);
+                $("#notPara").text("Not " + localStorage.name + "?");
+                $("#paraDiv").show();
+            }
+            
         </script>
 
     </div>

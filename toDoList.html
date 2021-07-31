@@ -13,7 +13,7 @@
     <style>
         * {
 	box-sizing: border-box;
-	margin: 0;
+
 }
 
 html {
@@ -25,6 +25,7 @@ body {
 	min-height: 100vh;
 	overflow: auto;
 	padding: 0 0 100px 0;
+
 }
 
 #date-time {
@@ -561,13 +562,13 @@ li:hover .toggle {
 
 
 
-    // var toggleButton = document.getElementById('toggle-button');
+    var toggleButton = document.querySelector('.toggle');
 
     clearButton.addEventListener('click', deleteAll);
 
     toggleAllButton.addEventListener('click', toggleAll)
 
-    // toggleButton.addEventListener('click', remove);
+    toggleButton.addEventListener('click', toggle);
 
     addInputButton.addEventListener('keypress', function(e){
       if(e.key === 'Enter'){

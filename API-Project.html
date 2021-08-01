@@ -68,7 +68,7 @@
             // selectedCountry
             // previousYear
             // holidayList
-            function getHolidays(countryCode) {
+            function getHolidays(countryCode, countryName) {
 
                     var previousYear = new Date().getFullYear() - 1;
 
@@ -85,7 +85,7 @@
                         success: function(data){
                             var holidays = data.holidays;
 
-                            $("#selectedCountry").text(countryCode);
+                            $("#selectedCountry").text(countryName);
                             $("#previousYear").text(previousYear)
 
                             $("#holidayList").html("")
@@ -121,7 +121,9 @@
                         populate_countries(data);
                         if (localStorage.slectedCountry){
                             $("#countries").val(localStorage.slectedCountry);
-                            getHolidays(localStorage.slectedCountry);
+                            
+                            var countryName  = $("#countries option:selected").text();
+                            getHolidays(localStorage.slectedCountry, countryName);
                         }
                     },
                     error: function(){
@@ -140,7 +142,7 @@
 
             $("#countries").change(function() {
                 localStorage.setItem("slectedCountry", $("#countries").val())
-                getHolidays($("#countries").val());
+                getHolidays($("#countries").val(), countryName);
             })
 
             getCountries();

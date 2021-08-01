@@ -33,74 +33,45 @@
         }
     </style>
 
-    <div class="movieReviewProject">    
-            
-          <div id="detailsDiv"></div>
+    <div class="publicHolidayDiv">
+
+        <div class="holidayWrapper">
+            <p>Country: <strong id="selectedCountry"></strong></p>
+            <p>Year: <strong id="previousYear"></strong></p>
+            <ul id="holidayList">
+
+            </ul>
+        </div>
+
+        <!-- API KEY 2b513575-62bf-4b67-bde4-441c935735cd-->
+
+        <!--https://holidayapi.com/v1/holidays?pretty&key=2b513575-62bf-4b67-bde4-441c935735cd&country=AU&year=2020-->
+
 
         <script>
-                var courses = '[{"title": "PHP","reviews": []}, {"title": "Javascript","reviews": [5,5,4.5,4,5,5,5,4.5]}, {"title": "Python","reviews": [5,5,4,4,5,3,5,4,4,5]}, {"title": "Machine Learning","reviews": [5,5,4.5]}]';
+            function getHolidays(countryCode) {
+
+                var previousYear = new Date().getFullYear() - 1;
+                $.ajax({
+                    url : "https://holidayapi.com/v1/holidays?pretty&key="+ "2b513575-62bf-4b67-bde4-441c935735cd" + "&country="+ countryCode + "&year=" + previousYear,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data){
+                        holiday_countries(data) {
+
+                        }
+                        console.log(data.holidays)
+                    },
+                    error: function(){
+                        console.log("Error in the request");
+                    }  
+                });
+            }
+
+            holiday_countries(countries)
 
 
-                function averageReviews(data) {
-                    var courses = JSON.parse(data);
-                    for (a=0; a<courses.length; a++){
-                        // console.log(courses[a].reviews);
-                        var reviews = courses[a].reviews;
-
-                        try{
-                            if(reviews.length === 0){
-                                throw "No Reviews"
-                            } else if (reviews.length < 5){
-                                throw "Not enough reviews"
-                            }
-
-                            var summReviews = 0;
-
-                            for (b = 0; b<reviews.length; b++){
-                                summReviews += reviews[b];
-                            }
-                            
-
-                            var averageReivewsMethod = summReviews / reviews.length;
-                            courses[a].averageRating = averageReivewsMethod.toFixed(1);
-
-                            } catch(err) {
-                                courses[a].averageRating = err;
-
-                            }
-                        
-
-                        console.log(courses)
-
-                        var sum = courses[a].reviews.reduce(function(a, b){
-                            return a + b;
-                        }, 0);
-                        
-                        var average = sum / courses[a].reviews.length
-                        // console.log(courses[a].title + " = "+ average)
-
-                        var div = document.querySelector('#detailsDiv')
-                        var TitlePara = document.createElement('p');
-                        var ReviewPara = document.createElement('p');
-                         
-                        TitlePara.innerHTML = courses[a].title + " = "+ Math.floor(average) ;
-                        ReviewPara.innerHTML = average;
-
-                        div.appendChild(TitlePara);
-                        
-                    }
-
-                }                       
-
-                
-                        
-            
-                   
-                
-
-    
-
-                averageReviews(courses);
+            getHolidays("FRA");
         </script>
     </div>
 
@@ -137,6 +108,7 @@
 
             function populate_countries(countries){
                 for (a = 0; a < countries.length; a++) {
+                    // console.log(countries);
                     var countryOption = "<option value = '" +countries[a].alpha3Code +"'>" + countries[a].name + "</option>";
                     document.getElementById("countries").innerHTML += countryOption;
                 }
@@ -150,5 +122,76 @@
 
         </script>
     </div>
+
+    <div class="movieReviewProject">    
+            
+        <div id="detailsDiv"></div>
+
+      <script>
+              var courses = '[{"title": "PHP","reviews": []}, {"title": "Javascript","reviews": [5,5,4.5,4,5,5,5,4.5]}, {"title": "Python","reviews": [5,5,4,4,5,3,5,4,4,5]}, {"title": "Machine Learning","reviews": [5,5,4.5]}]';
+
+
+              function averageReviews(data) {
+                  var courses = JSON.parse(data);
+                  for (a=0; a<courses.length; a++){
+                      // console.log(courses[a].reviews);
+                      var reviews = courses[a].reviews;
+
+                      try{
+                          if(reviews.length === 0){
+                              throw "No Reviews"
+                          } else if (reviews.length < 5){
+                              throw "Not enough reviews"
+                          }
+
+                          var summReviews = 0;
+
+                          for (b = 0; b<reviews.length; b++){
+                              summReviews += reviews[b];
+                          }
+                          
+
+                          var averageReivewsMethod = summReviews / reviews.length;
+                          courses[a].averageRating = averageReivewsMethod.toFixed(1);
+
+                          } catch(err) {
+                              courses[a].averageRating = err;
+
+                          }
+                      
+
+                      // console.log(courses)
+
+                      var sum = courses[a].reviews.reduce(function(a, b){
+                          return a + b;
+                      }, 0);
+                      
+                      var average = sum / courses[a].reviews.length
+                      // console.log(courses[a].title + " = "+ average)
+
+                      var div = document.querySelector('#detailsDiv')
+                      var TitlePara = document.createElement('p');
+                      var ReviewPara = document.createElement('p');
+                       
+                      TitlePara.innerHTML = courses[a].title + " = "+ Math.floor(average) ;
+                      ReviewPara.innerHTML = average;
+
+                      div.appendChild(TitlePara);
+                      
+                  }
+
+              }                       
+
+              
+                      
+          
+                 
+              
+
+  
+
+              averageReviews(courses);
+      </script>
+  </div>
 </body>
 </html>

@@ -47,32 +47,6 @@
 
         <!--https://holidayapi.com/v1/holidays?pretty&key=2b513575-62bf-4b67-bde4-441c935735cd&country=AU&year=2020-->
 
-
-        <script>
-            function getHolidays(countryCode) {
-
-                var previousYear = new Date().getFullYear() - 1;
-                $.ajax({
-                    url : "https://holidayapi.com/v1/holidays?pretty&key="+ "2b513575-62bf-4b67-bde4-441c935735cd" + "&country="+ countryCode + "&year=" + previousYear,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data){
-                        holiday_countries(data) {
-
-                        }
-                        console.log(data.holidays)
-                    },
-                    error: function(){
-                        console.log("Error in the request");
-                    }  
-                });
-            }
-
-            holiday_countries(countries)
-
-
-            getHolidays("FRA");
-        </script>
     </div>
 
 
@@ -89,6 +63,55 @@
         </div>
 
         <script>
+
+
+            // selectedCountry
+            // previousYear
+            // holidayList
+            function getHolidays(countryCode) {
+
+                    var previousYear = new Date().getFullYear() - 1;
+
+                    $("#selectedCountry").text("");
+                    $("#previousYear").text("")
+
+                    $("#holidayList").html("")
+                            
+                    
+                    $.ajax({
+                        url : "https://holidayapi.com/v1/holidays?pretty&key="+ "2b513575-62bf-4b67-bde4-441c935735cd" + "&country="+ countryCode + "&year=" + previousYear,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data){
+                            var holidays = data.holidays;
+
+                            $("#selectedCountry").text(countryCode);
+                            $("#previousYear").text(previousYear)
+
+                            $("#holidayList").html("")
+                            
+
+                            for (a = 0 ; a < holidays.length; a++){
+                                if (holidays[a].public) {
+                                    var listItem = "<li>";
+                                    listItem += holidays[a].date + " - " + holidays[a].name
+                                    listItem += "</li>";
+
+                                    $("#holidayList").append(listItem);
+                                }
+                            }
+                        },
+                        error: function(){
+                            console.log("Error in the request");
+                        }  
+                    });
+                    }
+
+                   
+
+
+
+
             function getCountries() {
                 $.ajax({
                     url : "https://restcountries.eu/rest/v2/all",
@@ -98,6 +121,7 @@
                         populate_countries(data);
                         if (localStorage.slectedCountry){
                             $("#countries").val(localStorage.slectedCountry);
+                            getHolidays(localStorage.slectedCountry);
                         }
                     },
                     error: function(){
@@ -116,6 +140,7 @@
 
             $("#countries").change(function() {
                 localStorage.setItem("slectedCountry", $("#countries").val())
+                getHolidays($("#countries").val());
             })
 
             getCountries();

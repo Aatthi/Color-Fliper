@@ -59,7 +59,11 @@
         <div class="selectBoxDiv">
             <select name="Countr_List" id="countries">
                 <option value="Slect Country">Select Country</option>
-            </select>    
+            </select> 
+
+            <p id="capitalCity"></p>
+
+            
         </div>
 
         <script>
@@ -124,6 +128,7 @@
                             
                             var countryName  = $("#countries option:selected").text();
                             getHolidays(localStorage.slectedCountry, countryName);
+                           
                         }
                     },
                     error: function(){
@@ -133,16 +138,23 @@
             }
 
             function populate_countries(countries){
+                console.log(countries)
                 for (a = 0; a < countries.length; a++) {
-                    // console.log(countries);
                     var countryOption = "<option value = '" +countries[a].alpha3Code +"'>" + countries[a].name + "</option>";
                     document.getElementById("countries").innerHTML += countryOption;
-                }
-            }
+          
+                }   
+    }     
+
+            
 
             $("#countries").change(function() {
                 localStorage.setItem("slectedCountry", $("#countries").val())
+                var countryName  = $("#countries option:selected").text();
                 getHolidays($("#countries").val(), countryName);
+
+
+                
             })
 
             getCountries();

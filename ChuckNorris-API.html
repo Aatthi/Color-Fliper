@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuck Norris</title>
+</head>
+<body>
+
+    <div id="output"></div>
+    
+    
+    <script>
+        $(document).ready(function() {
+            var container = "";
+            $.getJSON("http://api.icndb.com/jokes/random/15", function(data){ 
+                // console.log(data)
+
+                for (var a in data.value){
+                    // container += parseInt(x)+1 + 
+                    newJoke = data.value[a]
+                     
+                    // console.log(newJoke.joke)
+                    var para = document.createElement('p');
+                    para.innerText = newJoke.joke;
+
+                    
+                }
+                $("#output").text(para);
+
+            })
+
+
+            // http://api.icndb.com/jokes/random/15
+        });
+    </script>
+    
+</body>
+</html>

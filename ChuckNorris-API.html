@@ -9,32 +9,32 @@
 </head>
 <body>
 
+   
+    <button id="GenerateButton">Generate Random CN FACT!</button>
     <div id="output"></div>
     
     
     <script>
+         $("#output").hide();
         $(document).ready(function() {
-            var container = "";
             $.getJSON("http://api.icndb.com/jokes/random/15", function(data){ 
-                // console.log(data)
+                
+           
 
+            $("#GenerateButton").click(function() {
+                var container = "";
                 for (var a in data.value){
-                    // container += parseInt(x)+1 + 
-                    newJoke = data.value[a]
-                     
-                    // console.log(newJoke.joke)
-                    var para = document.createElement('p');
-                    para.innerText = newJoke.joke;
-
-                    
+                    container += (parseInt(a)+1) + ". " + data.value[a].joke + "<br>";
                 }
-                $("#output").text(para);
+                $("#output").html(container);
+                $("#output").show();
 
             })
 
-
-            // http://api.icndb.com/jokes/random/15
         });
+    });
+            
+            
     </script>
     
 </body>

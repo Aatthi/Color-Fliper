@@ -58,13 +58,19 @@
     <script>
          
         $(document).ready(function() {
+            
             $.getJSON("http://api.icndb.com/jokes/random/100", function(data){ 
-            $("#GenerateButton").click(function() {
+                CNQuotes();
+               
+            $("#GenerateButton").click(CNQuotes)
+                
+            function CNQuotes() {
 
                 var jokeArray =[];
 
                 for (var a in data.value){
                     var jokes = data.value[a].joke 
+                    console.log(jokes )
                      
                     jokeArray.push(jokes);
 
@@ -73,7 +79,7 @@
 
                 $("#output").text(jokeArray[[Math.floor(Math.random() * jokeArray.length)]]);
 
-            })
+            }
 
         });
     });

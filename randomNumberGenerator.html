@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: black;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        #button{
+            padding: 20px 30px;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 0 5px 5px rgb(49, 49, 49);      
+            font-size: 25px;    
+            font-family: monospace;
+        }
+        h1{
+            padding: 30px 50px;
+        }
+    </style>
+    <h1 id="randomNumber"></h1>
+    <h1 id="randomCNQuotes"></h1>
+    <button id="button">Generate Random Number</button>
+
+    <script>
+        
+        $(document).ready(function(){
+
+            var CNquotes = ["The original title for Alien vs. Predator was Alien and Predator vs Chuck Norris. The film was cancelled shortly after going into preproduction. No one would pay nine dollars to see a movie fourteen seconds long.",
+                            "How much wood would a woodchuck chuck if a woodchuck could Chuck Norris? All of it.",
+                            "When Arnold says \"I\'ll be back\" in Terminator movie it is implied that he\'s going to ask Chuck Norris for help",
+                            "Chuck Norris once rode a nine foot grizzly bear through an automatic car wash, instead of taking a shower.",
+                            "A man once asked Chuck Norris if his real name is \"Charles\". Chuck Norris did not respond, he simply stared at him until he exploded",
+                            "There?s an order to the universe: space, time, Chuck Norris.... Just kidding, Chuck Norris is first.",
+                            "Chuck Norris can divide by zero",
+                            "Mr. T pities the fool. Chuck Norris rips the fool's head off",
+                            "We live in an expanding universe. All of it is trying to get away from Chuck Norris",
+                            "When Chuck Norris throws exceptions, it\'s across the room",
+                            "Chuck Norris doesn't turn on his faucet, he stares at it until it cries",
+                            "Chuck Norris can win a game of Trivial Pursuit with one roll of the dice, and without answering a single question... just a nod of the head, and a stroke of the beard",
+                            "Some people like to eat frogs' legs. Chuck Norris likes to eat lizard legs. Hence, snakes",
+                            "Superman once watched an episode of Walker, Texas Ranger. He then cried himself to sleep",
+                            "Chuck Norris doesn't see dead people. He makes people dead"
+                        ]
+
+            var colors = ['purple', 'yellow', 'orange', 'brown', 'pink', 'blue', 'red', 'green', 'burlywood'];
+            
+            $("#randomNumber").text(Math.floor(Math.random() * (10000000 + 1)));
+            $("body").css("background", colors[[Math.floor(Math.random() * colors.length)]])
+            $("#button").css("background", colors[[Math.floor(Math.random() * colors.length)]])
+            $("#randomCNQuotes").text(CNquotes[[Math.floor(Math.random() * CNquotes.length)]])
+
+            
+
+
+        $("#button").click(function() {
+            $("#randomNumber").text(Math.floor(Math.random() * (1000 + 1)));
+            $("body").css("background", colors[[Math.floor(Math.random() * colors.length)]])
+            $("#button").css("background", colors[[Math.floor(Math.random() * colors.length)]])
+            $("#randomCNQuotes").text(CNquotes[[Math.floor(Math.random() * CNquotes.length)]])
+            
+        })
+        })
+   
+    </script>
+</body>
+</html>

@@ -25,23 +25,26 @@
              
             $("#GenerateButton").click(function() {
 
-                var jokeArray = [];
+                
 
                 
-                $("#output").toggle();
-                var container = "";
+                
+                
                 for (var a in data.value){
+                    var jokeArray = [data.value[a].joke];
             
                     // console.log(data.value[a].joke)
 
-                    container += (parseInt(a)+1) + ". " + data.value[a].joke + "<br>";
+                    // container += (parseInt(a)+1) + ". " + data.value[a].joke + "<br>";
                     var para = document.createElement('p')
                     para.setAttribute("id", "para");
-                    $("#para").text(data.value[a].joke);
-                    var output = document.getElementById("output");
+                    // var output = document.getElementById("output");
+                    $("#output").text(jokeArray[[Math.floor(Math.random() * jokeArray.length)]]);
+
                 }
+
                 
-                $("#output").html(container);
+                // $("#output").html(container);
 
 
             })

@@ -9,43 +9,69 @@
 </head>
 <body>
     <style>
-    
+        html{
+            background-image: url(Images/CN.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: black;
+            text-align: center;
+            font-family: monospace;
+            height: 100vh;
+            font-size: 20px;
+
+        }
+
+        button{
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 0 5px 5px rgb(49, 49, 49);      
+            font-size: 25px;    
+            font-family: monospace;
+            margin: 50px 0;
+        }
+
+        button:hover{
+            background: cornsilk;
+        }
+        div{
+            padding: 30px 50px;
+            line-height: 30px;
+            color: black;
+            background: rgba(255, 255, 255, 0.815);
+            border-radius: 20px;
+        }
     </style>
 
-   
+    <div id="output"></div>
     <button id="GenerateButton">Generate Random CN FACT!</button>
-    <div id="output" style="display: none;"></div>
+    
     
     
     <script>
          
         $(document).ready(function() {
-            $.getJSON("http://api.icndb.com/jokes/random/15", function(data){ 
-                
-             
+            $.getJSON("http://api.icndb.com/jokes/random/100", function(data){ 
             $("#GenerateButton").click(function() {
 
-                
+                var jokeArray =[];
 
-                
-                
-                
                 for (var a in data.value){
-                    var jokeArray = [data.value[a].joke];
-            
-                    // console.log(data.value[a].joke)
+                    var jokes = data.value[a].joke 
+                     
+                    jokeArray.push(jokes);
 
-                    // container += (parseInt(a)+1) + ". " + data.value[a].joke + "<br>";
                     var para = document.createElement('p')
-                    para.setAttribute("id", "para");
-                    // var output = document.getElementById("output");
-                    $("#output").text(jokeArray[[Math.floor(Math.random() * jokeArray.length)]]);
-
                 }
 
-                
-                // $("#output").html(container);
-
+                $("#output").text(jokeArray[[Math.floor(Math.random() * jokeArray.length)]]);
 
             })
 

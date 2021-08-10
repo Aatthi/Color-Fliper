@@ -14,8 +14,9 @@
 
     <script>
 
-            $("#btn").click(function() {
+        $("#input").keyup(function(e) {
                 $("#para").text($("#input").val());
+                console.log(e)
                 
             })
     </script>

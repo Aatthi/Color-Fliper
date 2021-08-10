@@ -50,7 +50,7 @@ function init(){
      }
 
      function evalOutput() {
-        console.log('=');
+        console.log('=');2
         cOuput("black")
 
         if(output.value === ''){

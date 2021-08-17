@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Choice Picker</title>
+</head>
+
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0;
+    }
+
+    h3{
+        margin: 10px 0 20px;
+        text-align: center;
+    }
+
+    .container{
+        width: 500px;
+    }
+
+    #textarea{
+        border: none;
+        display: flex;
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        margin: 0 0 20px;
+        font-size: 16px;
+    }
+
+    #tags{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .tag{
+        background-color: #f0932b;
+        color: white;
+        border-radius: 50px;
+        padding: 10px;
+        margin: 0 5px 10px 0;
+        font-size: 14px;
+        display: inline-block;
+        border: none;
+    }
+
+    .tag.highlight{
+        background-color: #273c75;
+    }
+</style>
+<body>
+    <div class="container">
+        <h3>Enter All of the choices divided by a comma</h3>
+        <br>Press Enter When you are done <br>
+        <textarea placeholder="Enter Choices here..." id="textarea"></textarea>
+
+        <div id="tags">
+            <span class="tag">Choice 1</span>
+            <span class="tag">Choice 2</span>
+            <span class="tag highlight">Choice 3</span>
+        </div>
+    </div>
+
+    <script>
+        const tagsEl = document.querySelector('#tags')
+        const textarea = document.querySelector('#textarea')
+
+        textarea.focus() 
+
+        textarea.addEventListener('keyup', (e) => {
+            createTags(e.target.value)
+        });
+
+        function createTags(input) {
+
+        }
+    </script>
+
+
+</body>
+</html>

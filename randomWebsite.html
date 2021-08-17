@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: rgba(84, 115, 173, 0.2);
+        font-family: monospace;
+        line-height: 30px;
+    }
+
+
+    header{
+        background: grey;
+        width: 100%;
+        height: 500px;
+        background-image: url(Images/night\ sky.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        opacity: 0.7;
+        border-radius: 20px;
+        transition: all 0.28s;
+        font-size: 20px;
+
+    }
+
+    header:hover{
+        opacity: 1;
+    }
+    header ul{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        list-style: none;
+    }
+
+    li{
+        margin: 0 20px;
+        padding: 10px 15px;
+        color: white;
+        transition: all ease 0.28s;
+
+        
+        
+    }
+
+    li:hover{
+        background: white;
+        color: black;
+        border-radius: 50px;
+    }
+
+
+    main{
+        margin: 40px 0;
+    }
+
+    main div{
+        margin: 100px 0;
+    }
+    .main-Content1{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .main-Content1 p {
+        width: 50%;
+        text-align: center;
+    }
+
+    .main-Content2{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .main-Content2 p {
+        width: 50%;
+        text-align: center;
+    }
+
+    img{
+        padding: 2px;
+        border-radius: 50px;
+        background: rgba(196, 196, 196, 0.116);
+        transition: all 0.2s;
+    }
+
+    img:hover{
+        scale: 1.13;
+        border: 4px solid salmon;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <header>
+        <ul>
+            <li>Home</li>
+            <li>About Us</li>
+            <li>Gallery</li>
+            <li>Our Work</li>
+            <li>Contact Us</li>
+        </ul>
+    </header>
+
+    <main>
+        <div class="main-Content1">
+            <img src="images/journal.jpg" alt="" height="400px" width="600px">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni molestias praesentium facere quod a debitis esse adipisci est, distinctio officiis tenetur ex harum accusamus temporibus libero molestiae deleniti corrupti sunt nisi corporis similique, ab alias aliquam. Officia accusantium nemo error ducimus autem obcaecati vitae adipisci! Nostrum illum nihil aliquam eos minima culpa quam, officia illo esse fugiat harum explicabo repellat amet aperiam dolorum! Voluptates iusto molestias dolores quis, voluptatum ex praesentium pariatur excepturi consectetur obcaecati, iste, adipisci non nisi enim. Illum at reiciendis iure corporis suscipit facilis rerum officiis modi eligendi id sunt iusto voluptates debitis voluptate, ratione doloremque natus dignissimos ut quaerat quod obcaecati nihil quis? Officia repellat quis adipisci minima labore animi? Veniam, expedita, praesentium, sit illum fugiat qui fugit ullam explicabo asperiores totam eaque sunt. Veritatis iure esse exercitationem minima id, iusto mollitia quis quos repellat odio. Quis eveniet aperiam accusamus consequuntur, nemo officiis repudiandae pariatur consequatur! Veritatis deleniti laborum quod. Assumenda labore est ipsum itaque aperiam. Aut neque facilis ducimus quaerat ex adipisci possimus deserunt illo velit eos odit a unde tenetur voluptatem, assumenda eveniet delectus. Explicabo sapiente ducimus error, at aliquam aliquid! Obcaecati, dolores eum nostrum iste, asperiores error ipsam delectus maxime quod tenetur esse!</p>
+        </div>
+
+        <div class="main-Content2">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni molestias praesentium facere quod a debitis esse adipisci est, distinctio officiis tenetur ex harum accusamus temporibus libero molestiae deleniti corrupti sunt nisi corporis similique, ab alias aliquam. Officia accusantium nemo error ducimus autem obcaecati vitae adipisci! Nostrum illum nihil aliquam eos minima culpa quam, officia illo esse fugiat harum explicabo repellat amet aperiam dolorum! Voluptates iusto molestias dolores quis, voluptatum ex praesentium pariatur excepturi consectetur obcaecati, iste, adipisci non nisi enim. Illum at reiciendis iure corporis suscipit facilis rerum officiis modi eligendi id sunt iusto voluptates debitis voluptate, ratione doloremque natus dignissimos ut quaerat quod obcaecati nihil quis? Officia repellat quis adipisci minima labore animi? Veniam, expedita, praesentium, sit illum fugiat qui fugit ullam explicabo asperiores totam eaque sunt. Veritatis iure esse exercitationem minima id, iusto mollitia quis quos repellat odio. Quis eveniet aperiam accusamus consequuntur, nemo officiis repudiandae pariatur consequatur! Veritatis deleniti laborum quod. Assumenda labore est ipsum itaque aperiam. Aut neque facilis ducimus quaerat ex adipisci possimus deserunt illo velit eos odit a unde tenetur voluptatem, assumenda eveniet delectus. Explicabo sapiente ducimus error, at aliquam aliquid! Obcaecati, dolores eum nostrum iste, asperiores error ipsam delectus maxime quod tenetur esse!</p>
+            <img src="images/Lady.jpg" alt="" height="600px" width="400px">
+        </div>
+
+        <script>
+            $("img").click(function() {
+                    $("img").css("scale", '2')
+            })
+        </script>
+    </main>
+
+    </div>
+</body>
+</html>

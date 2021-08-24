@@ -12,62 +12,24 @@ let score = 0;
 let questionCounter = 0;
 let availableQuesions = [];
 
-let questions = [
-    {
-        question: 'Which of the following muscles (or muscle groups), if overactive, would cause anterior pelvic tild',
-        choice1: 'Glutes',
-        choice2: 'Hip Flexors',
-        choice3: 'Hamstrings',
-        choice4: 'Hip Externals',
-        answer: 2,
-    },
-    {
-        question:
-            "Which of the following is true for acute wry neck",
-        choice1: "Bilateral neck pain",
-        choice2: "referred pain contralateral side",
-        choice3: "unilateral pain",
-        choice4: "bilateral ROM restriction",
-        answer: 3,
-    },
-    {
-        question: "Which tendon irritates a Subacromial Bursa",
-        choice1: "Supraspinatus",
-        choice2: "Infraspinatus",
-        choice3: "Upper Trapezius",
-        choice4: "Pectoralis Major",
-        answer: 1,
-    },
+let questions = [];
 
-    // {
-    //     question: 'What exercise is involved in the initial Managmnt for Subacromial Bursitis',
-    //     choice1: 'Isometric strengthening',
-    //     choice2: 'Proprioception training',
-    //     choice3: 'Taping',
-    //     choice4: 'Active Assisted ROM Exercise',
-    //     answer: 4,
-    // },
-    // {
-    //     question: "What is the special test for ATFL sprain",
-    //     choice1: "Anterior Draw Test",
-    //     choice2: "Talar Tilt",
-    //     choice3: "Thomas Test",
-    //     choice4: "Passive Accessory Movement",
-    //     answer: 1,
-    // },
-    // {
-    //     question: "What is the longest muscle in the body",
-    //     choice1: "Biceps",
-    //     choice2: "Lattisimus Dorsi",
-    //     choice3: "Sartorius",
-    //     choice4: "Pectoralis Major",
-    //     answer: 3,
-    // },
-];
+
+fetch('questions.json')
+    .then((res) => {
+        return res.json();
+    })
+    .then((loadedQuestions) => {
+        questions = loadedQuestions;
+        startGame();
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 
 //CONSTANTS
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 3;
+const MAX_QUESTIONS = 6;
 
 startGame = () => {
     questionCounter = 0;
@@ -145,4 +107,3 @@ incrementScore = num => {
 }
 
 
-startGame();

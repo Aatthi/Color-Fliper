@@ -39,35 +39,35 @@ let questions = [
         answer: 1,
     },
 
-    {
-        question: 'What exercise is involved in the initial Managmnt for Subacromial Bursitis',
-        choice1: 'Isometric strengthening',
-        choice2: 'Proprioception training',
-        choice3: 'Taping',
-        choice4: 'Active Assisted ROM Exercise',
-        answer: 4,
-    },
-    {
-        question: "What is the special test for ATFL sprain",
-        choice1: "Anterior Draw Test",
-        choice2: "Talar Tilt",
-        choice3: "Thomas Test",
-        choice4: "Passive Accessory Movement",
-        answer: 1,
-    },
-    {
-        question: "What is the longest muscle in the body",
-        choice1: "Biceps",
-        choice2: "Lattisimus Dorsi",
-        choice3: "Sartorius",
-        choice4: "Pectoralis Major",
-        answer: 3,
-    },
+    // {
+    //     question: 'What exercise is involved in the initial Managmnt for Subacromial Bursitis',
+    //     choice1: 'Isometric strengthening',
+    //     choice2: 'Proprioception training',
+    //     choice3: 'Taping',
+    //     choice4: 'Active Assisted ROM Exercise',
+    //     answer: 4,
+    // },
+    // {
+    //     question: "What is the special test for ATFL sprain",
+    //     choice1: "Anterior Draw Test",
+    //     choice2: "Talar Tilt",
+    //     choice3: "Thomas Test",
+    //     choice4: "Passive Accessory Movement",
+    //     answer: 1,
+    // },
+    // {
+    //     question: "What is the longest muscle in the body",
+    //     choice1: "Biceps",
+    //     choice2: "Lattisimus Dorsi",
+    //     choice3: "Sartorius",
+    //     choice4: "Pectoralis Major",
+    //     answer: 3,
+    // },
 ];
 
 //CONSTANTS
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 6;
+const MAX_QUESTIONS = 3;
 
 startGame = () => {
     questionCounter = 0;
@@ -79,7 +79,7 @@ startGame = () => {
 getNewQuestion = () => {
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         //go to the end page
-        return window.location.assign('/end.html');
+        return window.location.assign('end.html');
     }
     questionCounter++;
     progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            min-height: 100vh;
+            width: 100%;
+            background: deepskyblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
+        }
+
+        div{
+           height: 200px;
+           border: 1px solid black;  
+           border-radius: 20px;
+           display: flex;        
+           justify-content: center;
+           align-items: center;
+           text-align: center;
+
+        }
+
+        button{
+            margin: 30px 0 0 0;
+            padding: 10px 20px;
+            background: chocolate;
+            border-radius: 20px;
+            border: none;
+            font-size: 18px;
+            transition: ease-in-out all 0.25s;
+
+        }
+
+        button:hover{
+            font-size: 30px;
+
+        }
+    </style>
+
+    <div></div>
+    <button>Click for Quote</button>
+
+
+    <script>
+        var div = document.querySelector('div');
+        var quoteButton = document.querySelector('button');
+        var body = document.querySelector('body')
+
+
+
+        div.style.padding = '20px 30px'
+        div.style.fontSize = '25px'
+        div.style.width = '200px'
+
+
+
+
+        var quotes = ['Dont just exist, LIVE', 'Started from the bottom Now Im here', 'It is what it is', 'Alright Alright Alright', 'Just Send it']
+        var color = ['#E7A1A1', '#FFA477', '#FFF599', 'C9FF93', '#ADE7BF', '#C9FFFD', '#C6E8FF', '#B2ABDA', '#FFBEDD']
+        var randomButtonC = ['#FE7E00', '#5E2612', '#EE0000', 'FFD700', '#ADFF2F', '#37FDFC', '#008B8B', '#0198E1', '#1464F4']
+
+        
+        function randomArray(){
+            var randomItem = quotes[Math.floor(Math.random()*quotes.length)];
+
+                            div.innerText = randomItem;
+                            console.log(randomItem)
+                    }
+
+
+        function randomColour(){
+            var randomColourItem = color[Math.floor(Math.random()*color.length)];
+            body.style.background = randomColourItem;
+            quoteButton.style.background = randomColourItem;
+
+            
+
+        }
+
+        function randomButtonColour(){
+            var randomButtonColourItem = randomButtonC[Math.floor(Math.random()*randomButtonC.length)];
+            quoteButton.style.background = randomButtonColourItem;
+
+            
+
+        }
+
+        quoteButton.addEventListener('click', function(){
+            randomArray();
+            randomColour();
+            randomButtonColour();
+
+        });           
+     
+
+
+    </script>
+</body>
+</html>

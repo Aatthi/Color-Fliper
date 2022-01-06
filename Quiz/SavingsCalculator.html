@@ -7,22 +7,153 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+
+   *{
+       padding: 0;
+       margin: 0;
+       box-sizing: border-box;
+   }
+
+   body{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       min-height: 700px;
+   }
+
+    .input-wrapper{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+        table{
+            text-align: center;
+            border: 1px solid rgb(32, 32, 32);
+            border-radius: 15px;
+            padding: 20px 80px;
+        }
+
+         th{
+            border: 1px solid black;
+            padding: 10px 20px;
+           
+            
+        }
+
+        input{
+            border: 0.5px solid black;
+            padding: 5px 10px;
+            text-align: center;
+        }
+
+        button{
+            padding: 20px 30px;
+            font-size: 25px;
+            font-family: monospace;
+            background: rgb(241, 241, 241);
+            border: 1px solid rgb(199, 199, 199);;
+            border-radius: 20px;
+            transition: all 0.25s;
+        }
+
+        button:hover{
+            background: rgb(92, 92, 92);
+            color: white;
+        }
+
+        .calulate-cell{
+            border: none;
+        }
+
+        .functionCell{
+            padding: 30px 20px;
+            border: none
+        }
+    </style>
+
     <div class="main-wrapper">
         <div class="graph-wrapper"></div>
 
         <div class="input-wrpper">
-            <input class="inputIncome" type="text" placeholder="Income">
-            <input type="inputExpense" placeholder="Expenditure">
 
+            <table>
+                <tr>
+                    <th>Weekly Income</th>
+                    <th><input class="inputIncome" type="text" placeholder="Income"></th>
+                </tr>
+                <tr>
+                    <th>Weekly Grocery</th>
+                    <th><input class="inputGroceryExpense expense" type="text" placeholder="Grocery Expense" ></th>
+                </tr>
+                <tr>
+                    <th>Weekly Utilities</th>
+                    <th><input class="inputUtilityExpense expense" type="text" placeholder="Utility Expense" ></th>
+                </tr>
+                <tr>
+                    <th>Weekly Charity</th>
+                    <th><input class="inputPersonalExpense expense" type="text" placeholder="Personal Expense" ></th>
+                </tr>
+                <tr>
+                    <th>Weekly Charity</th>
+                    <th><input class="inputChairtyExpense expense" type="text" placeholder="Chairty Expense" ></th>
+                </tr>
+                <tr class="functionCellWrapper">
+                    <th class="functionCell"><p class="savingOutput"></p></th>
+                    <th class="functionCell"><p class="totalExpensesOutput"></p></th>
+                    <th class="functionCell"><p class="incomeOutput"></p></p></th>
+                </tr>
+                <tr>
+                    <th class="calulate-cell"> <button class="calculateButton">Calculate</button></th>
+
+                </tr>
+            </table>
+
+        
         </div>
-        <p class="savingOutput"></p>
-        <p class="incomeOutput"></p>
-        <button>Calculate</button>
+        
+                <script>
+            
+            var inputIncome = document.querySelector('.inputIncome');
+
+            var inputGroceryExpense = document.querySelector('.inputGroceryExpense');
+            var inputUtilityExpense = document.querySelector('.inputUtilityExpense');
+            var inputPersonalExpense = document.querySelector('.inputPersonalExpense');
+            var inputChairtyExpense = document.querySelector('.inputChairtyExpense');
+            var expenseInput = document.querySelectorAll('.expense')
+
+            var totalExpensesOutput = document.querySelector('.totalExpensesOutput')
+            var savingOutput = document.querySelector('.savingOutput')
+            var incomeOutput = document.querySelector('.incomeOutput')
+            
+
+            var calculateButton = document.querySelector('.calculateButton');
 
 
-        <script>
+          
+            
+      
+
+             calculateButton.addEventListener('click', function() {
+
+                
+                var totalExpenses = parseInt(inputGroceryExpense.value) +  parseInt(inputUtilityExpense.value) + parseInt(inputPersonalExpense.value) + parseInt(inputChairtyExpense.value);
+                var savings =  inputIncome.value - totalExpenses;
 
             
+                totalExpensesOutput.innerHTML = "$ " + totalExpenses;
+                savingOutput.innerHTML = "$ " + savings + " weekly";
+                incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly";
+
+
+                
+             })
+
+
             
             
 

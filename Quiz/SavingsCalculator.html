@@ -85,19 +85,62 @@
                 <tr>
                     <th>Weekly Income</th>
                     <th><input class="inputIncome" type="text" placeholder="Income"></th>
+                    <th>
+                        <select name="" id="" onchange="optionFunction(event)">
+                            <option value="Weekly">Weekly</option>
+                            <option value="Fortnightly">Fortnightly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Yearly">Yearly</option>
+                        </select>
+                    </th>
                 </tr>
                 <tr>
                     <th>Weekly Grocery</th>
                     <th><input class="inputGroceryExpense expense" type="text" placeholder="Grocery Expense" ></th>
+                    <th>
+                        <select name="" id="" onchange="optionFunction(event)">
+                            <option value="Weekly">Weekly</option>
+                            <option value="Fortnightly">Fortnightly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Yearly">Yearly</option>
+                        </select>
+                    </th>
                 </tr>
                 <tr>
                     <th>Weekly Utilities</th>
                     <th><input class="inputUtilityExpense expense" type="text" placeholder="Utility Expense" ></th>
+                    <th>
+                        <select name="" id="" onchange="optionFunction(event)">
+                            <option value="Weekly">Weekly</option>
+                            <option value="Fortnightly">Fortnightly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Yearly">Yearly</option>
+                        </select>
+                    </th>
                 </tr>
                 <tr>
-                    <th>Weekly Charity</th>
+                    <th>Weekly Personal</th>
                     <th><input class="inputPersonalExpense expense" type="text" placeholder="Personal Expense" ></th>
+                    <th>
+                        <select name="" id="" onchange="optionFunction(event)">
+                            <option value="Weekly">Weekly</option>
+                            <option value="Fortnightly">Fortnightly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Yearly">Yearly</option>
+                        </select>
+                    </th>
                 </tr>
+                    <th>Weekly Charity</th>
+                    <th><input class="inputChairtyExpense expense" type="text" placeholder="Charity Expense" ></th>
+                    <th>
+                        <select name="" id="" onchange="optionFunction(event)">
+                            <option value="Weekly">Weekly</option>
+                            <option value="Fortnightly">Fortnightly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Yearly">Yearly</option>
+                        </select>
+                    </th>
+            </tr>
 
                 <tr class="functionCellWrapper">
                     <th class="functionCell"><p class="savingOutput"></p></th>
@@ -128,9 +171,26 @@
             var incomeOutput = document.querySelector('.incomeOutput')
             
 
-            var calculateButton = document.querySelector('.calculateButton');
+            var select = document.querySelector('select');
 
 
+
+
+
+            var calculateButton = document.querySelector('button')
+
+            function optionFunction(evt) {
+                //  var option = document.querySelector('option')
+                    if (evt.target.value === "Weekly"){ 
+                        console.log('weekly option')
+                    } else if(evt.target.value === "Fortnightly"){
+                        console.log('Fortnightly option')
+                    } else if(evt.target.value === "Monthly"){
+                        console.log('Monthly option')
+                    } else if(evt.target.value === "Yearly"){
+                        console.log('Yearly option')
+                    } 
+                };
           
             
       
@@ -146,9 +206,21 @@
                 savingOutput.innerHTML = "$ " + savings + " weekly";
                 incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly";
 
+                
+                
+
+    
+         
+             })
+
+
+
+
+
+
 
                 
-             })
+             
 
 
             

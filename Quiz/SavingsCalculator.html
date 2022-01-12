@@ -20,6 +20,8 @@
        justify-content: center;
        align-items: center;
        min-height: 700px;
+       background: #e63946;
+       color: #f1faee;
    }
 
     .input-wrapper{
@@ -33,22 +35,38 @@
 
         table{
             text-align: center;
-            border: 1px solid rgb(32, 32, 32);
+            border: 15px solid #457b9d;
             border-radius: 15px;
             padding: 20px 80px;
         }
 
          th{
-            border: 1px solid black;
-            padding: 10px 20px;
-           
-            
+            border: 1px solid #a8dadc80;
+            padding: 30px 50px;
+            font-size: 25px;
+            font-family: monospace;
+
         }
 
+        option{
+            border: 1px solid #a8dadc80;
+            padding: 30px 50px;
+            font-size: 25px;
+            font-family: monospace;
+
+        }
+
+       
+
         input{
-            border: 0.5px solid black;
+            border: 1px solid black;
             padding: 5px 10px;
             text-align: center;
+            font-size: 25px;
+            background: #1d3557;
+            color: #f1faee;
+            border-radius: 20px;
+            padding: 10px 20px;
         }
 
         button{
@@ -83,10 +101,10 @@
 
             <table>
                 <tr>
-                    <th>Weekly Income</th>
+                    <th> Income</th>
                     <th><input class="inputIncome" type="text" placeholder="Income"></th>
                     <th>
-                        <select name="" id="" onchange="optionFunction(event)">
+                        <select name="" id="WeeklyIncomeSelect">
                             <option value="Weekly">Weekly</option>
                             <option value="Fortnightly">Fortnightly</option>
                             <option value="Monthly">Monthly</option>
@@ -96,49 +114,49 @@
                 </tr>
                 <tr>
                     <th>Weekly Grocery</th>
-                    <th><input class="inputGroceryExpense expense" type="text" placeholder="Grocery Expense" ></th>
+                    <th><input class="inputGroceryExpense expense" type="text" placeholder="Grocery Expense"></th>
                     <th>
-                        <select name="" id="" onchange="optionFunction(event)">
+                        <!-- <select name="" id="WeeklyGrocerySelect" onchange="optionFunction(event)">
                             <option value="Weekly">Weekly</option>
                             <option value="Fortnightly">Fortnightly</option>
                             <option value="Monthly">Monthly</option>
                             <option value="Yearly">Yearly</option>
-                        </select>
+                        </select> -->
                     </th>
                 </tr>
                 <tr>
                     <th>Weekly Utilities</th>
                     <th><input class="inputUtilityExpense expense" type="text" placeholder="Utility Expense" ></th>
                     <th>
-                        <select name="" id="" onchange="optionFunction(event)">
+                        <!-- <select name="" id="WeeklyUtilitiesSelect" onchange="optionFunction(event)">
                             <option value="Weekly">Weekly</option>
                             <option value="Fortnightly">Fortnightly</option>
                             <option value="Monthly">Monthly</option>
                             <option value="Yearly">Yearly</option>
-                        </select>
+                        </select> -->
                     </th>
                 </tr>
                 <tr>
                     <th>Weekly Personal</th>
                     <th><input class="inputPersonalExpense expense" type="text" placeholder="Personal Expense" ></th>
                     <th>
-                        <select name="" id="" onchange="optionFunction(event)">
+                        <!-- <select name="" id="WeeklyPersonalSelect" onchange="optionFunction(event)">
                             <option value="Weekly">Weekly</option>
                             <option value="Fortnightly">Fortnightly</option>
                             <option value="Monthly">Monthly</option>
                             <option value="Yearly">Yearly</option>
-                        </select>
+                        </select> -->
                     </th>
                 </tr>
                     <th>Weekly Charity</th>
                     <th><input class="inputChairtyExpense expense" type="text" placeholder="Charity Expense" ></th>
                     <th>
-                        <select name="" id="" onchange="optionFunction(event)">
+                        <!-- <select name="" id="WeeklyCharitySelect" onchange="optionFunction(event)">
                             <option value="Weekly">Weekly</option>
                             <option value="Fortnightly">Fortnightly</option>
                             <option value="Monthly">Monthly</option>
                             <option value="Yearly">Yearly</option>
-                        </select>
+                        </select> -->
                     </th>
             </tr>
 
@@ -157,18 +175,27 @@
         </div>
         
                 <script>
-            
-            var inputIncome = document.querySelector('.inputIncome');
 
+                    var expenseInput = document.getElementsByClassName("expense")
+                    
+        
+            var inputIncome = document.querySelector('.inputIncome');
             var inputGroceryExpense = document.querySelector('.inputGroceryExpense');
             var inputUtilityExpense = document.querySelector('.inputUtilityExpense');
             var inputPersonalExpense = document.querySelector('.inputPersonalExpense');
             var inputChairtyExpense = document.querySelector('.inputChairtyExpense');
             var expenseInput = document.querySelectorAll('.expense')
 
-            var totalExpensesOutput = document.querySelector('.totalExpensesOutput')
-            var savingOutput = document.querySelector('.savingOutput')
-            var incomeOutput = document.querySelector('.incomeOutput')
+            var totalExpensesOutput = document.querySelector('.totalExpensesOutput');
+            var savingOutput = document.querySelector('.savingOutput');
+            var incomeOutput = document.querySelector('.incomeOutput');
+
+            var WeeklyIncomeSelect = document.querySelector('#WeeklyIncomeSelect');
+            var WeeklyGrocerySelect = document.querySelector('#WeeklyIncomeSelect');
+            var WeeklyUtilitiesSelect = document.querySelector('#WeeklyIncomeSelect');
+            var WeeklyPersonalSelect = document.querySelector('#WeeklyIncomeSelect');
+            var WeeklyCharitySelect = document.querySelector('#WeeklyIncomeSelect');
+
             
 
             var select = document.querySelector('select');
@@ -177,41 +204,72 @@
 
 
 
-            var calculateButton = document.querySelector('button')
+            var calculateButton = document.querySelector('button');
 
-            function optionFunction(evt) {
-                //  var option = document.querySelector('option')
-                    if (evt.target.value === "Weekly"){ 
-                        console.log('weekly option')
-                    } else if(evt.target.value === "Fortnightly"){
-                        console.log('Fortnightly option')
-                    } else if(evt.target.value === "Monthly"){
-                        console.log('Monthly option')
-                    } else if(evt.target.value === "Yearly"){
-                        console.log('Yearly option')
-                    } 
-                };
+
           
-            
-      
 
              calculateButton.addEventListener('click', function() {
+
+
+
 
                 
                 var totalExpenses = parseInt(inputGroceryExpense.value) +  parseInt(inputUtilityExpense.value) + parseInt(inputPersonalExpense.value) + parseInt(inputChairtyExpense.value);
                 var savings =  inputIncome.value - totalExpenses;
 
             
-                totalExpensesOutput.innerHTML = "$ " + totalExpenses;
-                savingOutput.innerHTML = "$ " + savings + " weekly";
-                incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly";
 
-                
-                
 
-    
-         
+
+                if (inputIncome.value === null || inputIncome.value === "", inputGroceryExpense.value === null || inputGroceryExpense.value === "", inputUtilityExpense.value == null || inputUtilityExpense.value == "", inputPersonalExpense.value == null || inputPersonalExpense.value == "", inputChairtyExpense.value == null || inputChairtyExpense.value == "") {
+                    alert("Please Fill All Required Field");
+                    return false;
+                } else {
+                    totalExpensesOutput.innerHTML = "$ " + totalExpenses;
+                    savingOutput.innerHTML = "$ " + savings + " weekly";
+                    incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly";
+
+                }
+
+
              })
+
+             WeeklyIncomeSelect.addEventListener('change', function() {
+
+
+
+
+                var totalExpenses = parseInt(inputGroceryExpense.value) +  parseInt(inputUtilityExpense.value) + parseInt(inputPersonalExpense.value) + parseInt(inputChairtyExpense.value);
+                var savings =  inputIncome.value - totalExpenses;
+
+            
+
+
+
+                if (inputIncome.value === null || inputIncome.value === "", inputGroceryExpense.value === null || inputGroceryExpense.value === "", inputUtilityExpense.value == null || inputUtilityExpense.value == "", inputPersonalExpense.value == null || inputPersonalExpense.value == "", inputChairtyExpense.value == null || inputChairtyExpense.value == "") {
+                    alert("Please Fill All Required Field");
+                    return false;
+                } else {
+
+                    if (WeeklyIncomeSelect.value === "Weekly"){
+                    incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly"
+                } else if(WeeklyIncomeSelect.value === "Fortnightly"){
+                    incomeOutput.innerHTML = "$ " + parseInt(savings)  * 26 + " Yearly"
+                } else if(WeeklyIncomeSelect.value === "Monthly"){
+                    incomeOutput.innerHTML = "$ " + parseInt(savings)  * 12 + " Yearly"
+                } else if(WeeklyIncomeSelect.value === "Yearly"){
+                    incomeOutput.innerHTML = "$ " + parseInt(savings)  * 1 + " Yearly"
+                } 
+                
+                    totalExpensesOutput.innerHTML = "$ " + totalExpenses;
+                    savingOutput.innerHTML = "$ " + savings + " weekly";
+                    incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly";
+
+                }
+
+             });
+           
 
 
 
@@ -226,7 +284,7 @@
             
             
 
-        </script>
+        </script>   
     </div>
 </body>
 </html>

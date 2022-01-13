@@ -92,6 +92,19 @@
             padding: 30px 20px;
             border: none
         }
+
+        #savingsCellWrapper{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            
+        }
+
+        #savingsCell{
+            margin: 30px 0;
+        }
     </style>
 
     <div class="main-wrapper">
@@ -158,6 +171,8 @@
                             <option value="Yearly">Yearly</option>
                         </select> -->
                     </th>
+
+
             </tr>
 
                 <tr class="functionCellWrapper">
@@ -169,9 +184,28 @@
                     <th class="calulate-cell"> <button class="calculateButton">Calculate</button></th>
 
                 </tr>
-            </table>
 
-        
+                <tr>
+
+                </tr>
+
+
+            </table>
+            <div id="savingsCellWrapper">
+                <div>
+                    <input id="savingsInput"type="text" placeholder="Set a Yearly Savings Goal">
+                    
+                    <button id="savingsSetButton">Set</button>    
+                </div>
+                <div>
+
+                    <div id="savingsCell">
+                    </div>
+
+                
+                </div>
+            </div>
+
         </div>
         
                 <script>
@@ -195,6 +229,88 @@
             var WeeklyUtilitiesSelect = document.querySelector('#WeeklyIncomeSelect');
             var WeeklyPersonalSelect = document.querySelector('#WeeklyIncomeSelect');
             var WeeklyCharitySelect = document.querySelector('#WeeklyIncomeSelect');
+
+            var savingsInput = document.querySelector('#savingsInput');
+            var savingsSetButton = document.querySelector('#savingsSetButton')
+            var savingsCell = document.querySelector('#savingsCell')
+
+            savingsSetButton.addEventListener('click', function(){
+                // console.log(savingsInput.value)
+
+                var totalExpenses = parseInt(inputGroceryExpense.value) +  parseInt(inputUtilityExpense.value) + parseInt(inputPersonalExpense.value) + parseInt(inputChairtyExpense.value);
+                var savings =  inputIncome.value - totalExpenses;
+
+            
+
+
+
+                if (inputIncome.value === null || inputIncome.value === "", inputGroceryExpense.value === null || inputGroceryExpense.value === "", inputUtilityExpense.value == null || inputUtilityExpense.value == "", inputPersonalExpense.value == null || inputPersonalExpense.value == "", inputChairtyExpense.value == null || inputChairtyExpense.value == "") {
+                    alert("Please Fill All Required Field");
+                    return false;
+                } else {
+
+
+
+                    
+
+                    totalExpensesOutput.value = "$ " + totalExpenses;
+                    savingOutput.value =  savings;
+                    incomeOutput.value = "$ " + parseInt(savings)  * 52 + " Yearly";
+
+
+                    //    console.log(totalExpensesOutput.value)
+                    //    console.log(savingOutput.value)
+                    //    console.log(totalExpensesOutput.value)
+                    var SavingsGoalDifference = parseInt(savingsInput.value) / parseInt(savingOutput.value);
+                    var roundedTwoDPSavingsGoalDifference =  SavingsGoalDifference.toFixed(2)
+                    var roundedSavingsGoalDifference =  SavingsGoalDifference.toFixed(0)
+
+                    if (savingsInput.value === null || savingsInput.value === ""){
+                        alert("Please Fill All Required Field");
+                    return false;
+                    } else {
+
+                        const getSundayFromWeekNum = (weekNum, year) => {
+                            const sunday = new Date(year, 0, (1 + (weekNum - 1) * 7));
+                            while (sunday.getDay() !== 0) {
+                                sunday.setDate(sunday.getHours() - 1);
+                            }
+                            return sunday;
+                            }
+
+                            // console.log(getSundayFromWeekNum(roundedSavingsGoalDifference, 2021))
+
+
+                        var goalSetTo = document.createElement('h2');
+                        var weeksToGoal = document.createElement ('h1')
+                        // var predictedDate = document.createElement('h1')
+
+                        
+                        savingsCell.appendChild(goalSetTo);
+                        savingsCell.appendChild(weeksToGoal);
+                        // savingsCell.appendChild(predictedDate)
+                        goalSetTo.innerHTML = "Current goal set to " + "$" + savingsInput.value;
+                        weeksToGoal.innerHTML = "It will take you " + roundedTwoDPSavingsGoalDifference + " Weeks to reach your savings goal";
+
+                        
+                        savingsInput.value = '';
+
+                  
+
+                    
+                    }
+                   
+                    
+        
+        
+  
+
+ 
+                }
+
+
+
+            })
 
             
 
@@ -266,7 +382,6 @@
 
              WeeklyIncomeSelect.addEventListener('change', function() {
 
-                console.log('Hello')
 
 
                 var totalExpenses = parseInt(inputGroceryExpense.value) +  parseInt(inputUtilityExpense.value) + parseInt(inputPersonalExpense.value) + parseInt(inputChairtyExpense.value);
@@ -279,9 +394,7 @@
                 if (inputIncome.value === null || inputIncome.value === "", inputGroceryExpense.value === null || inputGroceryExpense.value === "", inputUtilityExpense.value == null || inputUtilityExpense.value == "", inputPersonalExpense.value == null || inputPersonalExpense.value == "", inputChairtyExpense.value == null || inputChairtyExpense.value == "") {
                     alert("Please Fill All Required Field");
                     return false;
-                } else {
-
-                    if (WeeklyIncomeSelect.value === "Weekly"){
+                } else if (WeeklyIncomeSelect.value === "Weekly"){
                     incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly"
                 } else if(WeeklyIncomeSelect.value === "Fortnightly"){
                     incomeOutput.innerHTML = "$ " + parseInt(savings)  * 26 + " Yearly"
@@ -289,8 +402,7 @@
                     incomeOutput.innerHTML = "$ " + parseInt(savings)  * 12 + " Yearly"
                 } else if(WeeklyIncomeSelect.value === "Yearly"){
                     incomeOutput.innerHTML = "$ " + parseInt(savings)  * 1 + " Yearly"
-                } 
-                
+                } else  {
                     totalExpensesOutput.innerHTML = "$ " + totalExpenses;
                     savingOutput.innerHTML = "$ " + savings + " weekly";
                     incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly";

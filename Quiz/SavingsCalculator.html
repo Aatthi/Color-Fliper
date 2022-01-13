@@ -181,7 +181,9 @@
                     <th class="functionCell"><p class="incomeOutput"></p></p></th>
                 </tr>
                 <tr>
+                    <th class="calulate-cell"></th>
                     <th class="calulate-cell"> <button class="calculateButton">Calculate</button></th>
+                    <th class="calulate-cell"></th>
 
                 </tr>
 
@@ -208,11 +210,9 @@
 
         </div>
         
-                <script>
+        <script>
 
-                    var expenseInput = document.getElementsByClassName("expense")
-                    
-        
+            var expenseInput = document.getElementsByClassName("expense")
             var inputIncome = document.querySelector('.inputIncome');
             var inputGroceryExpense = document.querySelector('.inputGroceryExpense');
             var inputUtilityExpense = document.querySelector('.inputUtilityExpense');
@@ -234,24 +234,20 @@
             var savingsSetButton = document.querySelector('#savingsSetButton')
             var savingsCell = document.querySelector('#savingsCell')
 
+
+            var select = document.querySelector('select');
+            var calculateButton = document.querySelector('button');
+
             savingsSetButton.addEventListener('click', function(){
                 // console.log(savingsInput.value)
 
                 var totalExpenses = parseInt(inputGroceryExpense.value) +  parseInt(inputUtilityExpense.value) + parseInt(inputPersonalExpense.value) + parseInt(inputChairtyExpense.value);
                 var savings =  inputIncome.value - totalExpenses;
 
-            
-
-
-
                 if (inputIncome.value === null || inputIncome.value === "", inputGroceryExpense.value === null || inputGroceryExpense.value === "", inputUtilityExpense.value == null || inputUtilityExpense.value == "", inputPersonalExpense.value == null || inputPersonalExpense.value == "", inputChairtyExpense.value == null || inputChairtyExpense.value == "") {
                     alert("Please Fill All Required Field");
                     return false;
                 } else {
-
-
-
-                    
 
                     totalExpensesOutput.value = "$ " + totalExpenses;
                     savingOutput.value =  savings;
@@ -278,9 +274,6 @@
                             return sunday;
                             }
 
-                            // console.log(getSundayFromWeekNum(roundedSavingsGoalDifference, 2021))
-
-
                         var goalSetTo = document.createElement('h2');
                         var weeksToGoal = document.createElement ('h1')
                         // var predictedDate = document.createElement('h1')
@@ -294,49 +287,15 @@
 
                         
                         savingsInput.value = '';
-
-                  
-
                     
                     }
-                   
-                    
-        
-        
-  
-
- 
                 }
-
-
-
             })
-
-            
-
-            var select = document.querySelector('select');
-
-
-
-
-
-            var calculateButton = document.querySelector('button');
-
-
-          
 
              calculateButton.addEventListener('click', function() {
 
-
-
-
-                
                 var totalExpenses = parseInt(inputGroceryExpense.value) +  parseInt(inputUtilityExpense.value) + parseInt(inputPersonalExpense.value) + parseInt(inputChairtyExpense.value);
                 var savings =  inputIncome.value - totalExpenses;
-
-            
-
-
 
                 if (inputIncome.value === null || inputIncome.value === "", inputGroceryExpense.value === null || inputGroceryExpense.value === "", inputUtilityExpense.value == null || inputUtilityExpense.value == "", inputPersonalExpense.value == null || inputPersonalExpense.value == "", inputChairtyExpense.value == null || inputChairtyExpense.value == "") {
                     alert("Please Fill All Required Field");
@@ -345,16 +304,10 @@
                     totalExpensesOutput.innerHTML = "$ " + totalExpenses;
                     savingOutput.innerHTML = "$ " + savings + " weekly";
                     incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly";
-
                 }
-
 
                 var totalExpenses = parseInt(inputGroceryExpense.value) +  parseInt(inputUtilityExpense.value) + parseInt(inputPersonalExpense.value) + parseInt(inputChairtyExpense.value);
                 var savings =  inputIncome.value - totalExpenses;
-
-            
-
-
 
                 if (inputIncome.value === null || inputIncome.value === "", inputGroceryExpense.value === null || inputGroceryExpense.value === "", inputUtilityExpense.value == null || inputUtilityExpense.value == "", inputPersonalExpense.value == null || inputPersonalExpense.value == "", inputChairtyExpense.value == null || inputChairtyExpense.value == "") {
                     alert("Please Fill All Required Field");
@@ -374,22 +327,13 @@
                     totalExpensesOutput.innerHTML = "$ " + totalExpenses;
                     savingOutput.innerHTML = "$ " + savings + " weekly";
                     incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly";
-
                 }
-
-
              })
 
              WeeklyIncomeSelect.addEventListener('change', function() {
 
-
-
                 var totalExpenses = parseInt(inputGroceryExpense.value) +  parseInt(inputUtilityExpense.value) + parseInt(inputPersonalExpense.value) + parseInt(inputChairtyExpense.value);
                 var savings =  inputIncome.value - totalExpenses;
-
-            
-
-
 
                 if (inputIncome.value === null || inputIncome.value === "", inputGroceryExpense.value === null || inputGroceryExpense.value === "", inputUtilityExpense.value == null || inputUtilityExpense.value == "", inputPersonalExpense.value == null || inputPersonalExpense.value == "", inputChairtyExpense.value == null || inputChairtyExpense.value == "") {
                     alert("Please Fill All Required Field");
@@ -406,24 +350,8 @@
                     totalExpensesOutput.innerHTML = "$ " + totalExpenses;
                     savingOutput.innerHTML = "$ " + savings + " weekly";
                     incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly";
-
                 }
-
              });
-           
-
-
-
-
-
-
-
-                
-             
-
-
-            
-            
 
         </script>   
     </div>

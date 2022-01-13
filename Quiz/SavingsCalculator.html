@@ -16,6 +16,7 @@
    }
 
    body{
+       margin: 300px 0 0 0;
        display: flex;
        justify-content: center;
        align-items: center;
@@ -37,12 +38,12 @@
             text-align: center;
             border: 15px solid #457b9d;
             border-radius: 15px;
-            padding: 20px 80px;
+            padding: 10px 40px;
         }
 
          th{
             border: 1px solid #a8dadc80;
-            padding: 30px 50px;
+            padding: 20px 10px;
             font-size: 25px;
             font-family: monospace;
 
@@ -50,7 +51,6 @@
 
         option{
             border: 1px solid #a8dadc80;
-            padding: 30px 50px;
             font-size: 25px;
             font-family: monospace;
 
@@ -60,13 +60,13 @@
 
         input{
             border: 1px solid black;
-            padding: 5px 10px;
+
             text-align: center;
             font-size: 25px;
             background: #1d3557;
             color: #f1faee;
             border-radius: 20px;
-            padding: 10px 20px;
+            padding: 5px 10px;
         }
 
         button{
@@ -233,11 +233,40 @@
                 }
 
 
+                var totalExpenses = parseInt(inputGroceryExpense.value) +  parseInt(inputUtilityExpense.value) + parseInt(inputPersonalExpense.value) + parseInt(inputChairtyExpense.value);
+                var savings =  inputIncome.value - totalExpenses;
+
+            
+
+
+
+                if (inputIncome.value === null || inputIncome.value === "", inputGroceryExpense.value === null || inputGroceryExpense.value === "", inputUtilityExpense.value == null || inputUtilityExpense.value == "", inputPersonalExpense.value == null || inputPersonalExpense.value == "", inputChairtyExpense.value == null || inputChairtyExpense.value == "") {
+                    alert("Please Fill All Required Field");
+                    return false;
+                } else {
+
+                    if (WeeklyIncomeSelect.value === "Weekly"){
+                    incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly"
+                } else if(WeeklyIncomeSelect.value === "Fortnightly"){
+                    incomeOutput.innerHTML = "$ " + parseInt(savings)  * 26 + " Yearly"
+                } else if(WeeklyIncomeSelect.value === "Monthly"){
+                    incomeOutput.innerHTML = "$ " + parseInt(savings)  * 12 + " Yearly"
+                } else if(WeeklyIncomeSelect.value === "Yearly"){
+                    incomeOutput.innerHTML = "$ " + parseInt(savings)  * 1 + " Yearly"
+                } 
+                
+                    totalExpensesOutput.innerHTML = "$ " + totalExpenses;
+                    savingOutput.innerHTML = "$ " + savings + " weekly";
+                    incomeOutput.innerHTML = "$ " + parseInt(savings)  * 52 + " Yearly";
+
+                }
+
+
              })
 
              WeeklyIncomeSelect.addEventListener('change', function() {
 
-
+                console.log('Hello')
 
 
                 var totalExpenses = parseInt(inputGroceryExpense.value) +  parseInt(inputUtilityExpense.value) + parseInt(inputPersonalExpense.value) + parseInt(inputChairtyExpense.value);

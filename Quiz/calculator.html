@@ -31,10 +31,26 @@
     
     }
 
+    #display{
+        font-family: monospace;
+        font-size: 30px;
+        background: rgb(238, 238, 238);
+        width: 275px;
+        padding: 5px 10px;
+        text-align: right;
+        height: 40px;
+    }
+
     .functionButtons{
         display: flex;
         justify-content: center;
         align-items: center;
+     
+    }
+
+    .functionButtons button{
+        background: orange;
+        margin: 1px;
     }
 
     .numbersRow{
@@ -43,14 +59,34 @@
         align-items: center;
     }
 
+    .numbersRow{
+        margin: 1px;
+        border: none;
+    }
+
     .cancelButton{
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
+    button{
+        padding: 20px 30px;
+        font-size: 20px;
+        border-radius: 5px;
+    }
+
+    #ac{
+        background: red;
+     
+
+    }
 </style>
 <body>
     <div class="wrapper">
+        <div class="display-Wrapper">
+            <h1 id="display"></h1>
+        </div>
         <div class="functionButtons">
             <button>/</button>
             <button>x</button>
@@ -58,25 +94,50 @@
             <button>-</button>
         </div>
         <div class="numbersRow">
-            <button>9</button>
-            <button>8</button>
-            <button>7</button>
+            <button class="number" value="9">9</button>
+            <button class="number" value="8">8</button>
+            <button class="number" value="7">7</button>
         </div>
         <div class="numbersRow">
-            <button>6</button>
-            <button>5</button>
-            <button>4</button>
+            <button class="number" value="6">6</button>
+            <button class="number" value="5">5</button>
+            <button class="number" value="4">4</button>
         </div>
         <div class="numbersRow">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
+            <button class="number" value="1">1</button>
+            <button class="number" value="2">2</button>
+            <button class="number" value="3">3</button>
         </div>
         <div class="cancelButton">
-            <button>0</button>
-            <button>AC</button>
+            <button class="number" value="0">0</button>
+            <button id="ac">AC</button>
         </div>
-        
     </div>
+
+    <script>
+        var display = document.querySelector('#display');
+        var button, i;
+        
+        button = Array.from(document.querySelectorAll('.number'));
+        
+
+        function displayNumbers() {
+                for (i = 0; i < button.length; i++) {
+                    button[i].addEventListener('click', function(){
+         
+                            display.innerHTML = this.value
+
+                    
+                    })
+                }
+        }
+
+        displayNumbers();
+
+
+        // now everytime I hit the button the numbers should type next to each other
+
+
+    </script>
 </body>
 </html>

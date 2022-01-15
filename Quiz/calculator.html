@@ -110,32 +110,56 @@
         </div>
         <div class="cancelButton">
             <button class="number" value="0">0</button>
-            <button id="ac">AC</button>
+            <button class="number" id="ac">AC</button>
+            <button class="number">&larr;</button>
         </div>
     </div>
 
     <script>
         var display = document.querySelector('#display');
         var button, i;
+        var numbers = Array.from(document.querySelectorAll('.number'));
         
         button = Array.from(document.querySelectorAll('.number'));
         
 
         function displayNumbers() {
-                for (i = 0; i < button.length; i++) {
-                    button[i].addEventListener('click', function(){
+                
+                    numbers.map( number => {
+                    number.addEventListener('click', (e) => {
+                        switch(e.target.innerText){
+                            case 'AC':
+                                display.innerText = '';
+                                break;
+
+                            case '=':
+                                try{
+                                    display.innerText = eval(display.innerText);
+                                } catch {
+                                    display.innerText = "Error"
+                                }
+                                break;
+
+                            case '←':
+                                if (display.innerText){
+                                display.innerText = display.innerText.slice(0, -1);
+                                }
+
+                            default:
+                            display.innerText += e.target.innerText;
+                        }
          
-                            display.innerHTML = this.value
+                            
 
                     
                     })
-                }
-        }
+                })
+        
+            }
 
         displayNumbers();
 
 
-        // now everytime I hit the button the numbers should type next to each other
 
 
     </script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 800px;
+        }
+    </style>
+
+    <div class="wrapper">
+        <button class="newStickiButton" onclick="newStickiFunciton()">+</button>
+        <button class="closeStickiButton" onclick="closeStickiFunciton()">X</button>
+        <div class="stickieswrapper">
+            
+        </div>
+    </div>
+    
+    <script>
+        var newStickiButton = document.querySelector(".newStickiButton")
+        var stickieswrapper = document.querySelector(".stickieswrapper")
+        var closeStickiButton = document.querySelector(".closeStickiButton")
+        
+
+        function closeStickiFunciton() {
+
+            var getTagName = document.getElementsByTagName("textArea")[1]
+            console.log('closed')
+            stickieswrapper.removeChild(getTagName);
+           
+            }
+
+
+
+        function newStickiFunciton() {
+
+            var textArea = document.createElement("textarea");
+            stickieswrapper.appendChild(textArea);
+
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .pageWrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+   
+    }
+
+    .sectionOne{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 100px;
+        height: 200px;
+        width: 100%;
+        border: 1px solid red;
+        background: rgba(255, 0, 0, 0.103);
+        
+    }
+
+    .sectionOne button{
+        padding: 10px 20px;
+        border: none;
+        background: white;
+        font-weight: 500;
+        margin: 0 50px;
+        transition: all 0.25s;
+    }
+
+    .sectionOne button:hover{
+        background: black;
+        font-weight: 700;
+        color: white;
+    }
+
+    .Square{
+        width: 200px;
+        height: 300px;
+        background: black;
+        margin: 0 20px;
+    }
+
+    .sectionTwo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background: rgba(0, 255, 255, 0.295);
+        padding: 100px 0;
+       
+    }
+</style>
+<body>
+    <div class="pageWrapper">
+        <div class="sectionOne">
+            <button>Home</button>
+            <button>Gallery</button>
+            <button>Contact Us</button>
+        </div>
+        <div class="sectionTwo">
+            <div class="Square squareOne">
+                <h2>Heading 1</h2>
+                <p>Lorem, ipsum dolor.</p>
+                <p>Lorem, ipsum dolor dolordolor .</p>
+                <p>Lorem, ipsum dolor ipsum.</p>
+                <p>Lorem, ipsum dolor LoremLorem Lorem.</p>
+
+            </div>
+            <div class="Square squareTwo"></div>
+            <div class="Square squareThree"></div>
+        </div>
+
+    </div>
+</body>
+</html>

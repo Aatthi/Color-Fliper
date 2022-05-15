@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid black;
+            height: 600px
+        }
+
+        .circleDiv{
+            width: 400px;
+            height: 400px;
+            background: red;
+            border-radius: 50%;
+0
+        }
+
+
+    </style>
+    <div class="wrapper">
+        <p class="circleDiv"></p>
+    </div>
+
+
+    <script>
+        var circleDiv = document.querySelector('.circleDiv')
+
+        function circleTransition() {
+            circleDiv.style.margin = "0 0 0 1000px"
+            circleDiv.style.transition = "all 0.4s"
+        }
+
+        function circleTransitionReverse() {
+            circleDiv.style.margin = "0 1000px 0 0"
+            circleDiv.style.transition = "all 0.4s"
+        }
+
+            circleDiv.addEventListener('mousedown', function() {
+                    console.log('pressed')
+                    circleTransition();
+                    
+            })
+
+            circleDiv.addEventListener('mouseup', function() {
+                    console.log('pressed')
+                    circleTransition();
+                    
+            })
+
+    </script>
+</body>
+</html>
